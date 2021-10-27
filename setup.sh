@@ -1,5 +1,9 @@
 # /bin/bash
 
+echo 'Extracting pre-trained-model'
+tar -xvzf pretrained-model.tar.gz
+
+
 echo 'Initializing Conda Environment' 
 conda init bash
 conda create env --file requiremets.yml
