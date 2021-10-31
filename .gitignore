@@ -1,8 +1,9 @@
 *.pyc
 *.swp
 *.pkl
-*.pth
 result*
 weights*
 .ipynb-checkpoints
 .Trash-0
+results
+crops
