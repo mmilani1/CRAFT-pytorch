@@ -103,11 +103,6 @@ def saveCrops(img_file, img, boxes, dirname='./crops/'):
             crop_width = distance_between_points(poly[0], poly[3])
             crop_height = distance_between_points(poly[0], poly[1])
             crop_poly = np.array([[0,0], [0, crop_height-1], [crop_width-1, crop_height-1], [crop_width-1, 0]]).astype(np.float32)
-
-            print('{}, {}'.format('Crop height', crop_height))
-            print('{}, {}'.format('Crop width', crop_width))
-            print('{}, {}'.format('Box corners', poly))
-            print('{}, {}'.format('Crop Corners', crop_poly))
             
             rotation_matrix = cv2.getPerspectiveTransform(poly, crop_poly)
             crop = cv2.warpPerspective(img, rotation_matrix, (crop_width, crop_height))
