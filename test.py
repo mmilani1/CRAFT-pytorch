@@ -54,7 +54,7 @@ parser.add_argument('--poly', default=False, action='store_true', help='enable p
 parser.add_argument('--show_time', default=True, action='store_true', help='show processing time')
 parser.add_argument('--test_folder', default='./images/', type=str, help='folder path to input images')
 parser.add_argument('--refine', default=False, action='store_true', help='enable link refiner')
-parser.add_argument('--refiner_model', default='weights/craft_refiner.pth', type=str, help='pretrained refiner model')
+parser.add_argument('--refiner_model', default='./weights/craft-refiner.pth', type=str, help='pretrained refiner model')
 
 args = parser.parse_args()
 
