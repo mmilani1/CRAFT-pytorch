@@ -2,7 +2,7 @@
 *.swp
 *.pkl
 result*
-weights*
+.pth
 .ipynb-checkpoints
 .Trash-0
 results
