@@ -3,6 +3,7 @@ import os
 import numpy as np
 import cv2
 import imgproc
+import math
 
 # borrowed from https://github.com/lengstrom/fast-style-transfer/blob/master/src/utils.py
 def get_files(img_dir):
@@ -57,7 +58,7 @@ def saveResult(img_file, img, boxes, dirname='./result/', verticals=None, texts=
                 poly = np.array(box).astype(np.int32).reshape((-1))
                 strResult = ','.join([str(p) for p in poly]) + '\r\n'
                 f.write(strResult)
-
+                
                 poly = poly.reshape(-1, 2)
                 cv2.polylines(img, [poly.reshape((-1, 1, 2))], True, color=(0, 0, 255), thickness=2)
                 ptColor = (0, 255, 255)
@@ -74,3 +75,45 @@ def saveResult(img_file, img, boxes, dirname='./result/', verticals=None, texts=
         # Save result image
         cv2.imwrite(res_img_file, img)
 
+def saveCrops(img_file, img, boxes, dirname='./crops/'): 
+        """ save text detection text crops one by one
+        Args:
+            img_file (str): image file name
+            img (array): raw image context
+            boxes (array): array of result file
+                Shape: [num_detections, 4] for BB output / [num_detections, 4] for QUAD output
+        Return:
+            None
+        """
+        img = np.array(img)
+        # make result file list
+        filename, file_ext = os.path.splitext(os.path.basename(img_file))
+        crops_dir = dirname + '/' + filename + '/'
+
+        if not os.path.isdir(dirname):
+            os.mkdir(dirname)
+        if not os.path.isdir(crops_dir):
+            os.mkdir(crops_dir)
+
+        for i, box in enumerate(boxes):
+            crop_img_file = crops_dir + str(i) + '.jpg'
+            poly = np.array(box).astype(np.float32).reshape((-1))           
+            poly = poly.reshape(-1, 2)
+            poly = np.concatenate([poly[0:1], reverse_array(poly[1:])])
+            crop_width = distance_between_points(poly[0], poly[3])
+            crop_height = distance_between_points(poly[0], poly[1])
+            crop_poly = np.array([[0,0], [0, crop_height-1], [crop_width-1, crop_height-1], [crop_width-1, 0]]).astype(np.float32)
+            
+            rotation_matrix = cv2.getPerspectiveTransform(poly, crop_poly)
+            crop = cv2.warpPerspective(img, rotation_matrix, (crop_width, crop_height))
+
+            # Save result image
+            cv2.imwrite(crop_img_file, crop)
+            
+def distance_between_points(p1, p2):
+    height = abs(p2[0] - p1[0])
+    width = abs(p2[1] - p1[1])
+    return int(math.sqrt(height**2 + width**2))
+
+def reverse_array(array):
+    return array[::-1]
