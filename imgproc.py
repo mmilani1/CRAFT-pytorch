@@ -7,6 +7,7 @@ MIT License
 import numpy as np
 from skimage import io
 import cv2
+import math
 
 def loadImage(img_file):
     img = io.imread(img_file)           # RGB order
@@ -68,3 +69,22 @@ def cvt2HeatmapImg(img):
     img = (np.clip(img, 0, 1) * 255).astype(np.uint8)
     img = cv2.applyColorMap(img, cv2.COLORMAP_JET)
     return img
+
+def crop_bbox(img, box):
+    poly = np.array(box).astype(np.float32).reshape((-1))           
+    poly = poly.reshape(-1, 2)
+    poly = np.concatenate([poly[0:1], reverse_array(poly[1:])])
+    crop_width = distance_between_points(poly[0], poly[3])
+    crop_height = distance_between_points(poly[0], poly[1])
+    crop_poly = np.array([[0,0], [0, crop_height-1], [crop_width-1, crop_height-1], [crop_width-1, 0]]).astype(np.float32)
+    
+    rotation_matrix = cv2.getPerspectiveTransform(poly, crop_poly)
+    return cv2.warpPerspective(img, rotation_matrix, (crop_width, crop_height))
+
+def reverse_array(array):
+    return array[::-1]
+
+def distance_between_points(p1, p2):
+    height = abs(p2[0] - p1[0])
+    width = abs(p2[1] - p1[1])
+    return int(math.sqrt(height**2 + width**2))

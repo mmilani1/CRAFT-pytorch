@@ -26,6 +26,7 @@ import json
 import zipfile
 
 from craft import CRAFT
+from crnn.demo import predict
 
 from collections import OrderedDict
 def copyStateDict(state_dict):
@@ -44,12 +45,12 @@ def str2bool(v):
 
 parser = argparse.ArgumentParser(description='CRAFT Text Detection')
 parser.add_argument('--trained_model', default='./weights/craft.pth', type=str, help='pretrained model')
-parser.add_argument('--text_threshold', default=0.7, type=float, help='text confidence threshold')
+parser.add_argument('--text_threshold', default=0.8, type=float, help='text confidence threshold')
 parser.add_argument('--low_text', default=0.4, type=float, help='text low-bound score')
-parser.add_argument('--link_threshold', default=0.4, type=float, help='link confidence threshold')
+parser.add_argument('--link_threshold', default=0.5, type=float, help='link confidence threshold')
 parser.add_argument('--cuda', default=True, type=str2bool, help='Use cuda for inference')
 parser.add_argument('--canvas_size', default=1280, type=int, help='image size for inference')
-parser.add_argument('--mag_ratio', default=1.5, type=float, help='image magnification ratio')
+parser.add_argument('--mag_ratio', default=1, type=float, help='image magnification ratio')
 parser.add_argument('--poly', default=False, action='store_true', help='enable polygon type')
 parser.add_argument('--show_time', default=True, action='store_true', help='show processing time')
 parser.add_argument('--test_folder', default='./images/', type=str, help='folder path to input images')
@@ -117,8 +118,6 @@ def test_net(net, image, text_threshold, link_threshold, low_text, cuda, poly, r
 
     return boxes, polys, ret_score_text
 
-
-
 if __name__ == '__main__':
     # load net
     net = CRAFT()     # initialize
@@ -160,14 +159,14 @@ if __name__ == '__main__':
         image = imgproc.loadImage(image_path)
 
         bboxes, polys, score_text = test_net(net, image, args.text_threshold, args.link_threshold, args.low_text, args.cuda, args.poly, refine_net)
+        words = [predict(imgproc.crop_bbox(image, box)) for box in polys]
 
         # save score text
         filename, file_ext = os.path.splitext(os.path.basename(image_path))
         mask_file = result_folder + "/res_" + filename + '_mask.jpg'
         cv2.imwrite(mask_file, score_text)
 
-        file_utils.saveResult(image_path, image[:,:,::-1], polys, dirname=result_folder)
+        file_utils.saveResult(image_path, image[:,:,::-1], polys, dirname=result_folder, texts=words)
         file_utils.saveCrops(image_path, image[:,:,::-1], polys)
-
 
     print("elapsed time : {}s".format(time.time() - t))
