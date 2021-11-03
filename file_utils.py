@@ -26,7 +26,7 @@ def list_files(in_path):
                 gt_files.append(os.path.join(dirpath, file))
             elif ext == '.zip':
                 continue
-    # img_files.sort()
+    img_files.sort()
     # mask_files.sort()
     # gt_files.sort()
     return img_files, mask_files, gt_files

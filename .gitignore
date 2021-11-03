@@ -3,7 +3,9 @@
 *.pkl
 result*
 *.pth
-.ipynb-checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
 .Trash-0
 results
 crops
+images
