@@ -36,3 +36,6 @@ evaluate-icdar-2015:
 	cd ..
 	python test.py --cuda=True
 	zip icdar2015-results.zip result/*.txt
+
+run-dev-app:
+	FLASK_ENV=development FLASK_APP=./app.py flask run

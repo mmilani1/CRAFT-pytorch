@@ -28,8 +28,9 @@ import zipfile
 from craft import CRAFT
 from crnn.demo import predict
 
-from collections import OrderedDict
 def copyStateDict(state_dict):
+    from collections import OrderedDict
+
     if list(state_dict.keys())[0].startswith("module"):
         start_idx = 1
     else:
@@ -67,7 +68,7 @@ result_folder = './result/'
 if not os.path.isdir(result_folder):
     os.mkdir(result_folder)
 
-def test_net(net, image, text_threshold, link_threshold, low_text, cuda, poly, refine_net=None):
+def run_detection(net, image, text_threshold, link_threshold, low_text, cuda, poly, refine_net=None):
     t0 = time.time()
 
     # resize
@@ -158,7 +159,7 @@ if __name__ == '__main__':
         print("Test image {:d}/{:d}: {:s}".format(k+1, len(image_list), image_path), end='\r')
         image = imgproc.loadImage(image_path)
 
-        bboxes, polys, score_text = test_net(net, image, args.text_threshold, args.link_threshold, args.low_text, args.cuda, args.poly, refine_net)
+        bboxes, polys, score_text = run_detection(net, image, args.text_threshold, args.link_threshold, args.low_text, args.cuda, args.poly, refine_net)
         words = [predict(imgproc.crop_bbox(image, box)) for box in polys]
 
         # save score text
