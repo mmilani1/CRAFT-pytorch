@@ -1,7 +1,7 @@
 *.pyc
 *.swp
 *.pkl
-result*
+/result
 *.pth
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
@@ -9,3 +9,13 @@ result*
 results
 crops
 images
+
+tg-latex/**/*.aux
+tg-latex/**/*.dvi
+tg-latex/**/*.idx
+tg-latex/**/*.lof
+tg-latex/**/*.log
+tg-latex/**/*.lot
+tg-latex/**/*.toc
+tg-latex/**/*.out
+__pycache__
