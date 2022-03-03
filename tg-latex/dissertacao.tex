@@ -26,7 +26,7 @@
 \usepackage{lmodern}				% Usa a fonte Latin Modern			
 \usepackage[T1]{fontenc}			% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-%\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
 \usepackage{indentfirst}			% Indenta o primeiro parágrafo de cada seção.
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx,graphicx}	% Inclusão de gráficos
@@ -51,30 +51,10 @@
 % ---------------------
 \usepackage[brazilian,hyperpageref]{backref}	% Paginas com as citações na bibl
 %\usepackage[alf]{abntex2cite}				% Citações padrão ABNT (alfa)
-\usepackage[num]{abntex2cite}				% Citações padrão ABNT (numericas)
+\usepackage[num,overcite]{abntex2cite}				% Citações padrão ABNT (numericas)
 % ---------------------
 
-% ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand{\leftovercite}{[}
-\renewcommand{\rightovercite}{]}
-
-% Usa colchetes nas citações em texto 
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
-% ---
-
+\include{extras/conf_citacoes}
 
 % Inclusão de dados para CAPA e FOLHA DE ROSTO (título, autor, orientador, etc.)
 \include{extras/dados}

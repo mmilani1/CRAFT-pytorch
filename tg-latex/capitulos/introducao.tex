@@ -9,6 +9,27 @@ Termos como inteligência artificial e aprendizado de máquina já são praticam
 
 Um escopo de aplicação de técnicas de aprendizado de máquina que tem evoluído bastante com o crescimento da popularidade e acessibilidade dos conceitos que envolvem \textit{machine learning} são aplicações voltadas para reconhecimento de texto.
 
-\section{Objetivo}\label{sec:objetivos}
+A escrita com certeza foi uma das grandes habilidades que a humanidade desenvolveu que mudou como relações e sociedades funcionavam, sendo adotata para transmissão e armazenagem de dados e informação, meio de comunicação e expressão.
+
+Com os avanços da tecnologia e em especial, dos computadores, um grande desafio emergiu: Como fazer com que computadores entendam o que está escrito em documentos físicos? Umas das primeiras patentes para soluções de OCR (abreviação de \textit{Optical Character Recognition}) data de 1929 \cite{readingMachine}, mas isso não nega o fato que a capacidade de transportar texto do meio físico para o meio digital de forma eficiente é um desafio interessante e que motiva pesquisas até hoje.
+
+Em linhas gerais, o reconhecimento óptico de caracteres é uma ampla tarefa de reconhecimento de padrões e, para que máquinas consigam identificar os padrões presentes na instâncias de texto, elas prescisam conhecer ao menos algumas caracteristicas dos caracteres e do texto que serão reconhecidos. Para exemplificar, a Reading Machine de Tauschek \cite{readingMachine} era uma aparelho mecânico que utilizava um disco de comparação, que continha o gabarito de cada um dos caracteres do alfabeto suportado. Esse foi o meio de "ensinar" a máquina a reconhecer um dado caracter.
+
+Muitos anos depois, soluções ainda tem a missão de "treinar" computadores a identificar as caracteristicas de caracteres e de textos como um todo e a principal ferramenta utilizada nos dias atuais são métodos sob o dominio de aprendizado de máquina, justamente pela capacidade de predição desses algoritmos dado um processo de treinamento. Ao longo deste trabalho de graduação outros conceitos que circundam o topico de aprendizado de maquina serão introduzidos com um pouco mais de profundidade.
+
+\section{Scene Text Recognition}
+
+Um sub-conjunto de casos do espaço de aplicações de reconhecimento optico de caracteres ganhou bastante tração no ultima decada, impulsinada pelo alto poder computacional dos dispositivos modernos, acelerados por unidades gráficas, e a acessibilidade ao desenvolvimento de soluções de aprendizado de máquina. Esse sub-conjunto é conhecido como STR (abreviação de \textit{Scene Text Recognition}, em inglês). Uma analogia para o STR seria aplicar soluções de OCR diretamente de fotos capturadas por uma câmera de um dispositivo móvel.
+
+Como o nome sugere, STR classifica no sub-conjunto onde o problema a ser resolvido é a detecção e o reconhecimento do texto em imagens cotidianas, em cenas. A diferença entre um problema de STR comparado ao caso mais comum de OCR é, em termos simples, a aparencia do texto e como ele será observado. Em uma imagem de cena, como por exemplo uma imagem da faixada de um supermercado, podemos ter textos em diferentes tamanhos, com diversas fontes, cores e orientações. Adicionalmente, por estarem muitas vezes sob influência do ambiente onde estão inseridos, outros fatores influenciam a observação desse texto, como iluminação, oclusão, danos devido ao clima, etc.
+
+%% COLOCAR E REFERENCIAR IMAGEM
+
+%%% Esse paragrafo parece que ficou misturos niveis de abstrações diferentes. REVISAR
+As soluções para problemas de STR, para lidarem com o nivel de generalização necessário para reconhecer texto nos mais diversos casos, são largamente baseadas nos conceitos de deep learning, que demonstram ser capazes de ir um passo à frente no quesito reconhecimento de padrões em comparação às técnicas clássicas de processamento de imagem e conseguirem ser aplicadas com eficiência sobre imagens, sendo a aplicação das redes neurais convolucionais, comumente abreviadas para CNN (\textit{Convolutional Neural Networks}, em inglês), um divisor de águas na evolução dessas soluções. \cite{DetcRecogWild,StrDlEra}.
+
+Assim, dada a importância do deep-learning, e em especial das CNNs nesse contexto de detecção e reconhecimento de texto, a próxima seção irá apresentar alguns conceitos básicos associados a essas estruturas.
+
+\section{Objetivo}
 
 \lipsum[36]
