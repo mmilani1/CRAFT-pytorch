@@ -1,7 +1,60 @@
 \chapter{Metodologia}
 
-\lipsum[43-45]
+Uma vez introduzidos à temática deste trabalho graduação, seu objetivo e os principais conceitos que o circundam, é possível agora abordar as etapas percorridas para executá-lo e, eventualmente, possibilitar que outros, iniciantes no estudo de aplicações de detecção e reconhecimento de texto, consigam reproduzi-lo, provendo uma documentação detalhada do caminho tomado durante o desenvolvimento do trabalho.
 
-\section{Considerações Finais}
+Sob ótica de todo o ciclo de desenvolvimento deste trabalho de graduação, houveram quatro grande marcos que servirão para estruturar esse capítulo:
 
-\lipsum[23]
+\begin{enumerate}
+    \item Experimentação com soluções de reconhecimento e detecção de texto.
+    \item Desenvolvimento da solução fim-a-fim a partir de detectores e reconhecedores de texto.
+    \item Avaliação da solução fim-a-fim proposta.
+    \item Publicação da solução em ambientes de computação em nuvem.
+\end{enumerate}
+
+1. Experimentação com soluções de reconhecimento e detecção de texto
+2. Desenvolvimento da solução fim-a-fim a partir de detectores e reconhecedores de texto
+3. Avaliação da solução fim-a-fim proposta
+4. Publicação da solução em ambientes de computação em nuvem
+
+Dessa forma, as sub-seções a seguir detalharão cada uma dessas etapas, sob perspectiva da experiencia do autor durante a execução deste trabalho de graduação.
+
+\section{Experimentação com soluções de reconhecimento e detecção de texto}
+
+Apesar de já ter sido mencionado a escolha dos componentes de detecção, CRAFT, e de reconhecimento, CRNN, não foi abordado o processo adotado que culminou nessa escolha. Nessa seção será abordado um pouco da motivação sobre essas escolhas, sob caráter mais técnico e pratico sobre as soluções públicas, que são de fácil acesso através da internet. 
+
+A partir de uma rápida busca na internet, em especial na plataforma do GitHub, hospedeiro de repositórios de código fonte versionados pela ferramenta Git, famoso sistema controlador de versão, é possível encontrar diversos repositórios mencionando soluções para detecção e reconhecimento de texto em cenas, as vezes até mesmo repositórios oficiais, oferecidos pelos autores de trabalhos famosos na área, como é o próprio exemplo do detector de texto CRAFT.
+
+No entanto, uma grande dificuldade para de fato conseguir executar o código desses repositórios é satisfazer os requisitos e dependências minímas, muitas vezes implícitos, por exemplo, a obrigatoriedade de possuir hardware com placa gráfica compatível com a versão utilizada no momento de desenvolvimento do trabalho original, a indisponibilidade dos modelos pré-treinados para rápida verificação de resultados, a base de código incompleta, sem todas as instruções para execução ou com dependências de versões antigas de linguagem de programação, bibliotecas e/ou frameworks, entre outros.
+
+Um outro ponto de grande valor na escolha dos métodos aplicados neste trabalho é a compatibilidade entre os métodos de detecção e reconhecimento. Como o grande objetivo deste trabalho se baseia na integração dessas soluções para que trabalhem juntas, o caminho mais simples nessa linha é que ambos projetos consigam se executados dentro do mesmo ambiente de desenvolvimento, com dependências em bibliotecas e frameworks parecidos, se não, iguais, para que não houvessem conflitos entre ambos os projetos que trouxessem problemas em tempo de execução.
+
+Na escolha do método de detecção de texto, a partir de uma revisão de trabalhos anteriores da área, foi considerado e, até certo ponto, experimentado, códigos oficiais e re-implementações publicas dos seguintes trabalhos:
+
+{{TODO: listas trabalhos e repositórios}}
+
+Por fim, o que foi mais acessível em relação aos pontos citados anteriormente foi o código-fonte do CRAFT. Os autores desenvolveram o modelo em Python, usando o framework PyTorch, que é bastante difundido, o que facilita na escolha de projetos para integrar o reconhecimento de texto. Os autores também disponibilizaram os modelos pré-treinados para detecção de texto em cenas, o que é um grande diferencial, já que o procedimento de treinamento dessas soluções não são triviais, além de costumarem ser bastante custosos temporal e computacionalmente, o que desviaria o foco do objetivo desse trabalho. Adicionalmente, o código fonte contém instruções minímas de como executar o modelo pré-treinado, que se mostraram suficientes para iniciantes sem muita experiencia prévia com a linguagem de programação e em trabalhos de detecção de texto. Outro diferencial foi a possibilidade de executar o modelo pré-treinado em hardwares sem aceleração gráfica, mesmo que com a penalização no tempo de execução, já que os componentes compatíveis não são baratos, em no contexto atual de cripto moedas e escassez de chips gráficos no mercado.
+
+Agora sobre a escolha do método de reconhecimento, como já temos que o detector escolhido usa a linguagem Python e o framework PyTorch, filtramos os métodos disponíveis por esses critérios. Uma implementação do CRNN em PyTorch foi escolhida pois atendia os critérios de compatibilidade com a linguagem, framework e bibliotecas que o CRAFT depende aliado ao fato do CRNN ser uma solução bastante popular, com implementação bastante sucinta e, novamente, de fácil execução a partir de um modelo pré-treinado, o que também foi fornecido pelo autor da implementação.
+
+{{ TODO: 
+- Explicar como executar cada um?
+- Explicar a parametrização de cada um? Inputs e Outputs?
+- Explicar }}
+
+A próxima sub-seção abordará, com um pouco mais de detalhes, como as duas soluções escolhidas foram integradas em uma mesma base de código e como os resultados do CRAFT foram processados para que pudessem alimentar a implementação do CRNN, completando a solução fim-a-fim do reconhecimento de texto. 
+
+\subsection{Desenvolvimento da solução fim-a-fim a partir de detectores e reconhecedores de texto}
+
+A fim de aplicar o reconhecimento, utilizando o CRNN, exatamente sobre o texto detectado e localizado pelo CRAFT, a escolha foi utilizar o repositório com o código fonte do detector CRAFT como base inicial para a aplicação de reconhecimento fim-a-fim e, a partir dele, adicionar a solução de reconhecimento dentro da mesma base de código e fazer com que ambas tenham todas as dependências necessárias para conseguirem executar seu processamento. Em outras palavras, foi necessário preparar um ambiente de desenvolvimento Python todas a dependências, a nível de linguagem de programação, bibliotecas e frameworks, instalados e sem conflitos, com tanto as bibliotecas que são dependências obrigatórias para a implementação do CRAFT quanto as bibliotecas que são utilizadas na implementação do CRNN.
+
+Para a gestão de ambientes de desenvolvimento e suas dependências, foi utilizado uma ferramenta no ecossistema Python chamada Conda, mantida pela empresa Anaconda. Com essa ferramenta é possível criar ambientes virtuais Python e instalar todas as dependências necessárias dentro desses ambientes virtuais usando poucas instruções na linha de comando do computador. A própria ferramenta fornece meios para de gerir os ambientes virtuais criados e otimiza a instalação de pacotes dentro desses ambientes de forma que conflitos sejam evitados, resolvendo as versões dos pacotes instalados de forma que sejam compatíveis entre si e compatíveis com a versão da linguagem Python escolhida para o ambiente. Uma grande vantagem de usar esse gerenciados de ambientes Python é a possibilidade de reproduzir qualquer ambiente previamente configurado a partir de um arquivo de configuração, do tipo YAML, que lista todos os pacotes instalados em um ambiente virtual para que, a partir desse arquivo, a ferramenta consiga remontar o mesmo ambiente sem precisar de configurações manuais novamente.
+
+Entrando mais no caminho percorrido para integrar as duas soluções, o primeiro passo foi replicar os repositórios para a conta pessoal do autor no GitHub. Esse processo dentro da plataforma se chama `fork`  e em geral é bastante utilizado para possibilitar que outras pessoas consigam desenvolver coisas novas na base de código sem ter o risco de empurrar mudanças no repositório original inadvertidamente. Dessa forma, ambos os repositórios foram replicados para a conta pessoal do autor e todo o desenvolvimento deste trabalho foi feito nos repositórios replicados.
+
+A partir dos repositórios replicados, foi utilizado um recurso da ferramenta de versionamento, o Git, que possibilita a composição de repositórios a fim de facilitar a sincronização das bases de códigos. O recurso em questão é a criação de sub-módulos em um repositório Git. Usando o comando abaixo a partir do repositório replicado do detector, foi gerado um relacionamento entre as duas bases de código, sendo que o repositório do CRNN agora é visto como um sub-modulo do repositório do CRAFT, e, a partir disso, é possível baixar, usar, evoluir a base de código do repositório do CRNN diretamente do repositório do CRAFT. Isso fez com que ambas soluções já tenham visibilidade uma da outra, mas ainda faz com que trabalhem juntas.
+
+```console
+git submodule add https://github.com/mmilani1/crnn.pytorch
+```
+
+Com as soluções na mesma base de código, uma etapa importante é a garantir que ambas ainda funcionam de forma isolada e se validar a compatibilidade das dependências de cada uma. Como mencionado na seção 3.2, uma das motivações da escolha especificamente dessas duas implementações citadas foi justamente a maior proximidade em termos de frameworks e bibliotecas que utilizam, justamente com a possibilidade de ambas soluções poderem ser executadas sem a necessidade de aceleração gráfica. Dessa forma não houveram problemas em executar separadamente cada solução, mesmo compartilhando o mesmo ambiente virtual.

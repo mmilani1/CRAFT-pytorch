@@ -23,7 +23,7 @@ Youngmin Baek et al. introduz um método de detecção a nível de caractere ond
     \item {Mapa de predição de afinidade entre caracteres (\textit{Character Afiinity Score}): Probabilidades de cada  pixel está localizado no centro da região entre caracteres}
 \end{itemize}
 
-Como o resultado da rede é bem específico, as imagens de \textit{ground truth} são geradas a partir de processamento de imagens. A partir das \textit{bounding boxes} de cada caractere, um \textit{heatmap} de uma distribuição gaussiana é projetada dentro de cada região de caractere, representando uma distribuição de probabilidade onde o centro da distribuição é o centro da região de caractere. Com isso tem-se o gabarito do primeiro resultado da rede. O \textit{ground truth} para as regiões de afinidade envolve novamente projetar um heatmap gaussiano em uma região que, agora, é calculada em tempo de execução a partir dos \textit{bounding boxes} de cada caractere. A Fig. \ref{fig:craft_gt}  ilustra o método utilizado, que se baseia em calcular uma região retangular entre caracteres utilizando os centróides dos caracteres vizinhos e centróides de triângulos gerados em cada caractere.
+Como o resultado da rede é bem específico, as imagens de \textit{ground truth} são geradas a partir de processamento de imagens. A partir das \textit{bounding boxes} de cada caractere, um \textit{heatmap} de uma distribuição gaussiana é projetada dentro de cada região de caractere, representando uma distribuição de probabilidade onde o centro da distribuição é o centro da região de caractere. Com isso tem-se o gabarito do primeiro resultado da rede. O \textit{ground truth} para as regiões de afinidade envolve novamente projetar um heatmap gaussiano em uma região que, agora, é calculada em tempo de execução a partir dos \textit{bounding boxes} de cada caractere. A Fig. \ref{fig:craft_gt}  ilustra o método utilizado, que se baseia em calcular uma região retangular entre caracteres utilizando os centroides dos caracteres vizinhos e centroides de triângulos gerados em cada caractere.
 
 \begin{figure}
     \centering
@@ -34,7 +34,7 @@ Como o resultado da rede é bem específico, as imagens de \textit{ground truth}
 
 Para treinar a rede, os autores se utilizaram de uma estratégia de aprendizado levemente supervisionado. Como as principais bases de imagens para treinamento não contam com anotações a nível de caracteres, a rede primariamente é treinada com imagens com texto sintético, usando o dataset SynthText \cite{SynthText}.
 
-Para refinar o treino em datasets com imagens de cenas reais, os autores utilizam a própria rede treinada em texto sintético para predizer as regiões de caracteres das imagens de cena para gerar anotações a nível de caracteres para as imagens dos datasets utilizados com auxílio de métodos de processamento de imagem, conforme exemplificado na Fig. \ref{fig:craft_char_level_annotation}. O proceso contém as seguintes etapas:
+Para refinar o treino em datasets com imagens de cenas reais, os autores utilizam a própria rede treinada em texto sintético para predizer as regiões de caracteres das imagens de cena para gerar anotações a nível de caracteres para as imagens dos datasets utilizados com auxílio de métodos de processamento de imagem, conforme exemplificado na Fig. \ref{fig:craft_char_level_annotation}. O processo contém as seguintes etapas:
 
 \begin{itemize}
     \item \textit{Cropping}: Extração das palavras que possuem região descrita nos arquivos de \textit{ground truth} dos datasets de benchmark.
