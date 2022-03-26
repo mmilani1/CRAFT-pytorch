@@ -168,5 +168,56 @@ prefix: /var/home/mmilani/.conda/envs/str-eval
 \end{minted}
 % ----------------------------------------------------------
 
+% ----------------------------------------------------------
+\chapter{Arquivo Dockerfile utilizado na publicação da aplicação em nuvem}\label{apd:dockerfile}
+% ---
+\begin{minted}{dockerfile}
+FROM continuumio/miniconda3:latest
+
+ARG FLASK_ENV='production'
+ENV FLASK_ENV $FLASK_ENV
+ENV FLASK_APP '/app/app.py'
+
+WORKDIR /app
+COPY ./requirements-cpu.yml /app/requirements-cpu.yml
+RUN conda env create -f /app/requirements-cpu.yml
+
+ADD . /app
+
+CMD [
+    "conda",
+    "run",
+    "--no-capture-output",
+    "-n",
+    "craft-detector",
+    "flask",
+    "run",
+    "--host=0.0.0.0",
+    "--port=\$PORT"
+]
+\end{minted}
+% ----------------------------------------------------------
+
+\chapter{Exemplo de arquivo de resultado para avaliação}\label{apd:exe_resultado}
+% ---
+\begin{minted}{text}
+3181,1200,3574,1200,3574,1278,3181,1278,mandela
+2622,1211,3154,1211,3154,1289,2622,1289,rolihlahla
+2241,1217,2600,1217,2600,1294,2241,1294,nelson
+3430,1305,3591,1305,3591,1383,3430,1383,2013
+3237,1311,3436,1311,3436,1388,3237,1388,1918
+3403,1581,3598,1589,3595,1660,3400,1651,legacy
+3032,1593,3253,1593,3253,1660,3032,1660,honour
+3261,1599,3397,1591,3401,1653,3264,1661,your
+2667,1604,2905,1604,2905,1676,2667,1676,madiba
+2921,1604,3021,1604,3021,1660,2921,1660,ve
+2462,1615,2644,1615,2644,1687,2462,1687,kahle
+2205,1632,2450,1623,2453,1695,2208,1703,hamba
+3354,1913,3617,1894,3623,1974,3359,1993,museum
+3016,1934,3362,1911,3367,1990,3021,2014,apartheid
+\end{minted}
+% ----------------------------------------------------------
+
+
 \end{apendicesenv}
 % ---
