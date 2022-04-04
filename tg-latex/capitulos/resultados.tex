@@ -76,7 +76,7 @@ O ICDAR 2011 apresenta casos mais complexos de detecção de reconhecimento de t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{ICDAR 2013}\label{sec:results_icdar_2013}
+\subsection{ICDAR 2013}\label{sec:results_icdar_2013}
 
 O conjunto de imagens de validação do ICDAR 2013 conta com 233 imagens de tamanhos variados. As menores têm cerca de 640 pixels de altura e 480 pixels de comprimento, enquanto as maiores têm dimensões comparáveis à resolução 4K, com 3888 pixels de altura e 2592 pixels de comprimento. Vale ressaltar que as imagens passam por uma redução em resolução ao entrarem no modelo CRAFT, que maximiza a maior dimensão da imagem para 1280 pixels e ajusta a segunda dimensão mantendo a relação de aspecto original, justamente para otimizar o desempenho do método.
 
@@ -161,7 +161,7 @@ Com caráter mais qualitativo, é interessante inferir a qualidade das soluçõe
     \label{fig:results_own_images_02}
 \end{figure}
 
-Algumas imagens utilizadas foram bastante desafiadoras para a solução, tanto em termos de localização quanto reconhecimento. Imagens com texto bem localizado e visível, alguns letreiros e placas tiveram bons resultados, mas alguns casos de palavras mais longas e curvadas, mesmo que levemente, não tiveram muito sucesso, especialmente se apresentarem caligrafia muito estilizadas, como é possível observar na Figura \ref{fig:results_own_images_03}. A respeito de textos curvados, melhorias na solução poderiam melhorar a situação, como a aplicação de soluções para transformar as imagens antes de passar pelo reconhecimento como, por exemplo, uma rede STN (\textit{Spatial Transformer Network} \cite{STN}), a fim de obter uma imagem com o mínimo de curvatura possível, facilitando o trabalho de reconhecimento.
+Algumas imagens utilizadas foram bastante desafiadoras para a solução, tanto em termos de localização quanto reconhecimento. Imagens com texto bem localizado e visível, alguns letreiros e placas tiveram bons resultados, mas alguns casos de palavras mais longas e curvadas, mesmo que levemente, não tiveram muito sucesso, especialmente se apresentarem caligrafia muito estilizadas, como é possível observar na Figura \ref{fig:results_own_images_03}. A respeito de textos curvados, melhorias na solução poderiam melhorar a situação, como a aplicação de soluções para transformar as imagens antes de passar pelo reconhecimento como, por exemplo, uma rede STN (\textit{Spatial Transformer Network} [\citeonline{STN}]), a fim de obter uma imagem com o mínimo de curvatura possível, facilitando o trabalho de reconhecimento.
 
 \begin{figure}
     \centering

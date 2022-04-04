@@ -134,7 +134,7 @@ O ICDAR 2011 conta com 410 imagens para treino e 141 imagens para validação, i
     \includegraphics[width=0.3\textwidth]{figs/img_33.png}
     \includegraphics[width=0.3\textwidth]{figs/img_62.jpg}
     \includegraphics[width=0.3\textwidth]{figs/img_13.jpg}
-    \caption{Exmplos de imagens do dataset ICDAR 2011. Fonte [\cite{ICDAR2011}]}
+    \caption{Exmplos de imagens do dataset ICDAR 2011. Fonte [\citeonline{ICDAR2011}]}
         \label{fig:icdar2011_examples}
 \end{figure}
 
@@ -212,7 +212,7 @@ Além da nova classe implementada, foi necessário criar um novo método que tem
 
 Com essas poucas mudanças já é possível, de maneira miníma e muito simplificada, atender pedidos de reconhecimento de texto sob demanda. O próximo passo adotado foi utilizar ferramentas e conceitos voltados a conteinerização da aplicação para facilitar a execução no ambiente remoto.
 
-\section{Contêiner, Docker e Publicação}
+\subsection{Contêiner, Docker e Publicação}
 Uma prática muito usual ao utilizar a computação em nuvem como meio de hospedar aplicações é gerar arquivos executáveis contendo tudo o que a aplicação precisa para funcionar: A base de código, as dependências, os binários, as configurações e tudo mais que for necessário, de maneira consistente e de fácil reprodutibilidade. Esse processo é por vezes chamado de conteinerização, onde um contêiner é esse agregado do código da aplicação e tudo o que for necessário para executá-la, de fato sendo executado. Uma das tecnologias de contêiner mais utilizadas é o Docker [\citeonline{Docker}]. Mais detalhes sobre Docker e contêineres podem ser encontrados na página oficial da tecnologia.
 
 A fim de gerar um contêiner da aplicação desenvolvida neste trabalho, o primeiro passo foi descrever como esse contêiner é construído, e, para isso, cria-se um arquivo chamado de Dockerfile. Nele consta uma série de comandos que são executados rigorosamente pelo Docker para criar uma imagem Docker. Ao executar a imagem pelo Docker, um contêiner é inicializado com o conteúdo da imagem executada e pode executar o código que foi compilado na imagem Docker. O arquivo Dockerfile pode ser consultado diretamente no repositório desse trabalho ou no Apêndice \ref{apd:dockerfile}.
