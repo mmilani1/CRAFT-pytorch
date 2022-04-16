@@ -123,40 +123,40 @@ Ao fim dessas alterações, integrando os dois modelos de detecção e reconheci
 
 \section{Método de avaliação da solução proposta}\label{sec:methodology_validation}
 
-A avaliação analítica da solução proposta neste trabalho é baseada na forma de avaliação da plataforma \textit{Robust Reading Competition}\footnote{https://rrc.cvc.uab.es/} (abreviação RRC), disponibilizado pelo Centro de Visão Computacional da Universidade Autônoma de Barcelona. Essa plataforma organiza competições em torno de problemas reais de visão computacional e tipicamente essas competições se relacionam com a Conferência Internacional sobre Análise e Reconhecimento de Documentos, abreviada como ICDAR, a partir no nome da conferência em inglês. Diversos \textit{datasets} que são amplamente adotados para treino e avaliação de modelos de reconhecimento de texto levam no nome a menção ao ICDAR, por introduzirem a base da dados e os desafios propostos, fomentando novos trabalhos na área.
+A avaliação analítica da solução proposta neste trabalho é baseada na forma de avaliação da plataforma \textit{Robust Reading Competition}\footnote{https://rrc.cvc.uab.es/}, disponibilizado pelo Centro de Visão Computacional da Universidade Autônoma de Barcelona. Essa plataforma organiza competições em torno de problemas reais de visão computacional e tipicamente essas competições se relacionam com a Conferência Internacional sobre Análise e Reconhecimento de Documentos, abreviada como ICDAR a partir do nome da conferência em inglês. Diversas bases de dados que são amplamente adotados para treino e avaliação de modelos de reconhecimento de texto levam no nome a menção ao ICDAR, por introduzirem a base da dados e os desafios propostos, fomentando novos trabalhos na área.
 
-Essa seção irá introduzir dos \textit{datasets} avaliados, as métricas utilizadas e o processo de avaliação da solução apresentada utilizando as ferramentas de avaliação disponibilizadas pela plataforma RRC.
+Essa seção irá introduzir as bases de dados avaliadas, as métricas utilizadas e o processo de avaliação da solução apresentada utilizando as ferramentas de avaliação disponibilizadas pela plataforma RRC.
 
-\subsection{Datasets}\label{sec:methodology_datasets}
+\subsection{Base de Dados}\label{sec:methodology_datasets}
 
-Conforme mencionado anteriormente, os \textit{datasets} dos desafios vinculados ao ICDAR são muito utilizados por trabalhos voltados à detecção e reconhecimento de texto. Ambos os modelos utilizados no desenvolvimento deste trabalho fazem referência aos \textit{datasets} ICDAR: O CRAFT cita os \textit{datasets} ICDAR 2013 [\citeonline{ICDAR2013}], ICDAR 2015 [\citeonline{ICDAR2015}] e ICDAR 2017 [\citeonline{ICDAR2017}] como bases de treinamento e de validação em quanto o CRNN se refere ao ICDAR 2003 [\citeonline{ICDAR2003}] e ICDAR 2013 como bases de imagens para validação. Os \textit{datasets} utilizados para a avaliação deste trabalho foram o ICDAR 2011 [\citeonline{ICDAR2011}], base para o primeiro desafio da platafoma RRC chamado \textit{Reading Text in Born-Digital Images}, e o ICDAR 2013, que é a base para o segundo desafio da plataforma RRC, chamado \textit{Focused Scene Text}.
+Conforme mencionado anteriormente, as bases de dados dos desafios vinculados ao ICDAR são muito utilizados por trabalhos voltados à detecção e reconhecimento de texto. Ambos os modelos utilizados no desenvolvimento deste trabalho fazem referência às bases de dados ICDAR: O CRAFT cita as bases de dados ICDAR 2013 [\citeonline{ICDAR2013}], ICDAR 2015 [\citeonline{ICDAR2015}] e ICDAR 2017 [\citeonline{ICDAR2017}] como bases de treinamento e de validação em quanto o CRNN se refere ao ICDAR 2003 [\citeonline{ICDAR2003}] e ICDAR 2013 como bases de imagens para validação. As bases de dados utilizadas para a avaliação deste trabalho foram o ICDAR 2011 [\citeonline{ICDAR2011}], base para o primeiro desafio da plataforma RRC chamado \textit{Reading Text in Born-Digital Images}, e o ICDAR 2013, que é a base para o segundo desafio da plataforma RRC, chamado \textit{Focused Scene Text}.
 
 \subsubsection{ICDAR 2011}\label{sec:datasets_icdar2011}
-O ICDAR 2011 [\citeonline{ICDAR2011}] conta com 410 imagens para treino e 141 imagens para validação, imagens que estão no contexto de anúncios de internet e anexos de e-mails, com palavras em geral na horizontal e anotadas com \textit{bounding-boxes} retangulares a nível de palavras. As imagens são anotadas com a localização de cada palavra com coordenadas das \textit{bounding-boxes} retangulares, que servem como gabarito para soluções de detecção e localização. Cada imagem também conta com a transição das palavras para servir como gabarito de soluções de reconhecimento conta A Figura \ref{fig:icdar2011_examples} expõe algumas imagens deste \textit{dataset}.
+O ICDAR 2011 [\citeonline{ICDAR2011}] conta com 410 imagens para treino e 141 imagens para validação, imagens que estão no contexto de anúncios de internet e anexos de e-mails, com palavras em geral na horizontal e anotadas com \textit{bounding-boxes} retangulares a nível de palavras. As imagens são anotadas com a localização de cada palavra com coordenadas das \textit{bounding-boxes} retangulares, que servem como gabarito para soluções de detecção e localização. Cada imagem também conta com a transição das palavras para servir como gabarito de soluções de reconhecimento conta A Figura \ref{fig:icdar2011_examples} expõe algumas imagens desta base de dados.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.3\textwidth]{figs/img_33.png}
     \includegraphics[width=0.3\textwidth]{figs/img_62.jpg}
     \includegraphics[width=0.3\textwidth]{figs/img_13.jpg}
-    \caption{Exmplos de imagens do \textit{dataset} ICDAR 2011. Fonte [\citeonline{ICDAR2011}]}
+    \caption{Exemplos de imagens da base de dados ICDAR 2011. Fonte [\citeonline{ICDAR2011}]}
         \label{fig:icdar2011_examples}
 \end{figure}
 
 \subsubsection{ICDAR 2013}\label{sec:datasets_icdar2013}
-O ICDAR 2013 [\citeonline{ICDAR2013}] conta com 219 imagens para treino e 233 imagens para validação. São imagens de cenas onde em geral o texto tem boa qualidade e está em destaque, na orientação horizontal. As anotações de gabarito são retangulares a nível de palavras e contam com a transição das mesmas, de forma similar às imagens do ICDAR 2011. A Figura \ref{fig:icdar2013_examples} expõe algumas imagens deste \textit{dataset}.
+O ICDAR 2013 [\citeonline{ICDAR2013}] conta com 219 imagens para treino e 233 imagens para validação. São imagens de cenas onde em geral o texto tem boa qualidade e está em destaque, na orientação horizontal. As anotações de gabarito são retangulares a nível de palavras e contam com a transição das mesmas, de forma similar às imagens do ICDAR 2011. A Figura \ref{fig:icdar2013_examples} expõe algumas imagens desta base de dados.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.3\textwidth]{figs/img_20.jpg}
     \includegraphics[width=0.3\textwidth]{figs/img_85.jpg}
     \includegraphics[width=0.3\textwidth]{figs/img_225.jpg}
-    \caption{Exmplos de imagens do \textit{dataset} ICDAR 2013. Fonte [\citeonline{ICDAR2013}]}
+    \caption{Exemplos de imagens da base de dados ICDAR 2013. Fonte [\citeonline{ICDAR2013}]}
     \label{fig:icdar2013_examples}
 \end{figure}
 
 \subsection{Métricas}\label{sec:methodology_metrics}
-Em conjunto aos \textit{datasets}, são fornecidas meios de avaliação para que cada nova solução que surgir possam ser avaliadas sob os mesmos termos, usando os mesmos conceitos e as mesmas métricas. Na plataforma RCC e nos \textit{datasets} que eles disponibilizam são utilizados: Precisão, Recall e F1-Score (ou H-Mean). A Precisão é a relação dos acertos (verdadeiros positivos) sobre a contagem total de predições positivas (verdadeiros positivos e falsos negativos), ou seja, dentre as predições da solução, qual é a porcentagem de acerto. O Recall relaciona a quantidade de acertos com a quantidade total de casos verdadeiros. O F1-Score é basicamente a média harmônica das métricas Precisão e Recall.
+Em conjunto às bases de dados, são fornecidas meios de avaliação para que cada nova solução que surgir possam ser avaliadas sob os mesmos termos, usando os mesmos conceitos e as mesmas métricas. Na plataforma RCC e nas bases de dados que eles disponibilizam são utilizados: Precisão, Recall e F1-Score (ou H-Mean). A Precisão é a relação dos acertos (verdadeiros positivos) sobre a contagem total de predições positivas (verdadeiros positivos e falsos negativos), ou seja, dentre as predições da solução, qual é a porcentagem de acerto. O Recall relaciona a quantidade de acertos com a quantidade total de casos verdadeiros. O F1-Score é basicamente a média harmônica das métricas Precisão e Recall.
 
 \begin{equation}
     Precisão = \frac{VP}{VP + FP}
@@ -170,17 +170,17 @@ Em conjunto aos \textit{datasets}, são fornecidas meios de avaliação para que
 
 Para determinar se uma predição foi correta existem duas condições: A região de texto detectada deve satisfazer uma métrica característica de eficácia em detecção e localização das palavras na imagem chamada IoU, abreviação para \textit{Intersection over Union}, além da transcrição predita ser exatamente igual ao gabarito. Para uma predição ser considerada correta, o valor de IoU, que se resume à precisão da detecção, deve ser maior ou igual a 50\%.
 
-A métrica de IoU pode ser calculada a partir das coordenadas verdadeiras de uma região de texto, documentadas nas anotações dos \textit{datasets}, e das coordenadas preditas pelo modelo de detecção. Ambos conjuntos de coordenadas descrevem uma área retangular, para os dois \textit{datasets} utilizados. Com esses dois conjuntos de valores, pode-se avaliar tanto o tamanho da intersecção entre a área predita e a área esperada, quanto o tamanho da união entre ambas as áreas. O valor numérico da métrica IoU decorre, conforme sugerido pelo nome da métrica, da divisão entre o tamanho da intersecção sobre o tamanho da união entre as áreas preditas e as áreas esperadas.
+A métrica de IoU pode ser calculada a partir das coordenadas verdadeiras de uma região de texto, documentadas nas anotações das bases de dados, e das coordenadas preditas pelo modelo de detecção. Ambos conjuntos de coordenadas descrevem uma área retangular, para as duas bases de dados utilizadas. Com esses dois conjuntos de valores, pode-se avaliar tanto o tamanho da intersecção entre a área predita e a área esperada, quanto o tamanho da união entre ambas as áreas. O valor numérico da métrica IoU decorre, conforme sugerido pelo nome da métrica, da divisão entre o tamanho da intersecção sobre o tamanho da união entre as áreas preditas e as áreas esperadas.
 
 \subsection{Interface de Validação}\label{sec:methodology_validation_interface}
 Na plataforma do RRC é possível avaliar uma solução formalizando a submissão dos resultados diretamente no site da competição, dessa forma os resultados ficam registrados na plataforma e pode ser até ranqueada junto a outros trabalhos submetidos. Para cada desafio da plataforma existe o ranque de soluções, onde é pode-se observar resultados de outros trabalhos de maneira simples e, quando disponível, até consultar quem são os autores, se existe algum repositório publico para a base de código, visualizar o artigo do trabalho, etc.
 
 No entanto não é a única opção. Existe a opção de efetuar o download dos \textit{scripts} que calculam os resultados, nos mesmos moldes da avaliação remota, a fim de executar todo o processo localmente, que foi o método adotado para esse trabalho.
 
-Para ambos os meios de validação, é necessário preparar arquivos de resultados, para cada imagem do \textit{dataset} de validação, com os dados necessários para a avaliação. Tanto o ICDAR 2011 quanto o ICDAR 2013 demandam arquivos com o mesmo formato, que se assemelham justamente aos arquivos de gabarito dessas bases, e seguem o seguinte formato descrito abaixo. Um exemplo de arquivo de resultado foi disponibilizado no Apêndice \ref{apd:exe_resultado}
+Para ambos os meios de validação, é necessário preparar arquivos de resultados, para cada imagem da base de dados de validação, com os dados necessários para a avaliação. Tanto o ICDAR 2011 quanto o ICDAR 2013 demandam arquivos com o mesmo formato, que se assemelham justamente aos arquivos de gabarito dessas bases, e seguem o seguinte formato descrito abaixo. Um exemplo de arquivo de resultado foi disponibilizado no Apêndice \ref{apd:exe_resultado}
 
 \begin{itemize}
-    \item É necessário gerar um arquivo de texto, para cada imagem, nomeados respeitando o seguinte formato: \texttt{res\_img\_\#.txt}, onde o \texttt{\#} corresponde ao identificador numérico da imagem no \textit{dataset}.
+    \item É necessário gerar um arquivo de texto, para cada imagem, nomeados respeitando o seguinte formato: \texttt{res\_img\_\#.txt}, onde o \texttt{\#} corresponde ao identificador numérico da imagem na base de dados.
     \item Cada arquivo deve ter uma linha para cada palavra detectada e reconhecida.
     \item Cada linha deve conter os seguintes valores, separados por virgula simples, exatamente na ordem especificada: posição do vértice esquerdo superior da \textit{bounding-box}, vértice direto inferior da \textit{bounding-box} e texto da transição.
 \end{itemize}

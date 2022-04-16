@@ -4,7 +4,7 @@
 \subsection{ICDAR 2011}\label{sec:results_icdar_2011}
 O conjunto de imagens de validação do ICDAR 2011 conta com 141 imagens e é importante de constatar que são imagens de relativa baixa resolução para os padrões atuais, onde as maiores contêm cerca de 315 mil pixels. São caracterizadas por estarem no contexto de imagens de anúncios e anexos de e-mails, com textos primariamente horizontais.
 
-Ao aplicar a solução sobre os exemplos de validação do dataset, em termos de desempenho, todas as imagens foram processadas com sucesso em 36.31 segundos em um ambiente com aceleração gráfica, média de 257 ms por imagem. Para fins comparativos, a mesma tarefa agora executada sem a aceleração gráfica levou 328.44 segundos, cerca de 9 vezes mais tempo, executando na mesma máquina alocada no serviço Paperspace, que consta com 30GB de memória RAM, disponibilidade de processamento gráfico com NVIDIA QUADRO M4000 e processamento CPU baseado em instâncias AWS C4, disponibilizam 8 núcleos, 16 threads do processador Intel Xeon E5-2666, com clock de 2.9 GHz.
+Ao aplicar a solução sobre os exemplos de validação da base de dados, em termos de desempenho, todas as imagens foram processadas com sucesso em 36.31 segundos em um ambiente com aceleração gráfica, média de 257 ms por imagem. Para fins comparativos, a mesma tarefa agora executada sem a aceleração gráfica levou 328.44 segundos, cerca de 9 vezes mais tempo, executando na mesma máquina alocada no serviço Paperspace, que consta com 30GB de memória RAM, disponibilidade de processamento gráfico com NVIDIA QUADRO M4000 e processamento CPU baseado em instâncias AWS C4, disponibilizam 8 núcleos, 16 threads do processador Intel Xeon E5-2666, com clock de 2.9 GHz.
 
 Apesar do maior tempo de processamento, o uso da solução em ambientes sem uma placa gráfica compatível ainda não se torna inviável, sobretudo considerando que a média de tempo de processamento por imagem foi de 2.32 segundos. No entanto, fica desencorajado a execução sobre um conjunto muito grande de imagens, já que o processamento corresponde a uma carga muito alta dependendo do hardware onde a solução for executada, uma vez que a execução em CPU alocou aproximadamente 17.4GB de memória, volume maior do que a quantidade total de grande parte dos sistemas mais domésticos.
 
@@ -72,7 +72,7 @@ Outra dificuldade ficou aparente em imagens de baixa resolução, que acabam con
 
 Um outro detalhe que demonstra uma dificuldade mais global do problema de reconhecimento de texto em cenas é a fonte utilizada na frase “A Love Story”, na região superior da Figura \ref{fig:results_icdar11_03}. Apesar do reconhecimento ter relativo sucesso nesse exemplo, a localização não conseguiu segmentar corretamente todas as palavras da frase. A generalização da detecção e do reconhecimento para os mais diversos tipos de fontes é um dos principais problemas que motivam o uso de redes neurais profundas para reconhecimento de texto. [\citeonline{StrDlEra}]
 
-O ICDAR 2011 apresenta casos mais complexos de detecção de reconhecimento de texto se comparado ao contexto de aplicações OCR convencionais, que lidam com reconhecimento de texto estruturado, sem grandes variações de fontes e planos de fundo, o que é bastante válido para avaliar a solução. No entanto, ainda não são casos reais de texto em cena, problema que motivou este trabalho. O dataset ICDAR 2013 contém exemplos mais característicos de texto de cena.
+O ICDAR 2011 apresenta casos mais complexos de detecção de reconhecimento de texto se comparado ao contexto de aplicações OCR convencionais, que lidam com reconhecimento de texto estruturado, sem grandes variações de fontes e planos de fundo, o que é bastante válido para avaliar a solução. No entanto, ainda não são casos reais de texto em cena, problema que motivou este trabalho. A base de dados ICDAR 2013 contém exemplos mais característicos de texto de cena.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -80,7 +80,7 @@ O ICDAR 2011 apresenta casos mais complexos de detecção de reconhecimento de t
 
 O conjunto de imagens de validação do ICDAR 2013 conta com 233 imagens de tamanhos variados. As menores têm cerca de 640 pixels de altura e 480 pixels de comprimento, enquanto as maiores têm dimensões comparáveis à resolução 4K, com 3888 pixels de altura e 2592 pixels de comprimento. Vale ressaltar que as imagens passam por uma redução em resolução ao entrarem no modelo CRAFT, que maximiza a maior dimensão da imagem para 1280 pixels e ajusta a segunda dimensão mantendo a relação de aspecto original, justamente para otimizar o desempenho do método.
 
-Ao aplicar a solução sobre os exemplos de validação do dataset, em termos de desempenho, todas as imagens foram processadas com sucesso em 207.74 segundos em um ambiente com aceleração gráfica, exatamente os mesmos recursos computacionais disponíveis na validação do ICDAR 2011, atingindo uma média de 892 ms por imagem. A média de tempo de processamento por imagem é cerca de 3.5 vezes maior quando comparado ao dataset anterior, ICDAR 2011.  As predições não foram executadas sem aceleração gráfica por economia de recursos.
+Ao aplicar a solução sobre os exemplos de validação da base de dados, em termos de desempenho, todas as imagens foram processadas com sucesso em 207.74 segundos em um ambiente com aceleração gráfica, exatamente os mesmos recursos computacionais disponíveis na validação do ICDAR 2011, atingindo uma média de 892 ms por imagem. A média de tempo de processamento por imagem é cerca de 3.5 vezes maior quando comparado às base de dados anterior, ICDAR 2011.  As predições não foram executadas sem aceleração gráfica por economia de recursos.
 
 Com base nas mesmas métricas apresentadas na Seção \ref{sec:results_icdar_2011}, durante a discussão sobre os resultados contra o ICDAR 2011, a avaliação da solução no ICDAR 2013 demonstra resultados similares aos vistos na Seção \ref{sec:results_icdar_2011}, disponíveis na Tabela \ref{tab:icdar13_results}. Cerca de 7 acertos a cada 10 predições. Tendo em vista que é uma base um pouco mais desafiadora, é um resultado novamente satisfatório. Comparando Precisão e Recall, nota-se um desvio maior, de aproximadamente 6 pontos percentuais, o que indica um maior número de falsos positivos, ou seja, regiões detectadas como regiões de texto que não estão nas anotações de gabarito. Em alguns casos, uma mesma palavra acabou sendo segmentada de maneira errada, em outros, regiões visivelmente de não-texto foram detectadas. A Figura \ref{fig:results_icdar13_01} demonstra esse fenômeno.
 
@@ -111,7 +111,7 @@ Com base nas mesmas métricas apresentadas na Seção \ref{sec:results_icdar_201
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figs/resultados-icdar13-01.png}
-    \caption{Demonstração de um falso positivo durante a avaliação da solução contra o dataset ICDAR 2013}
+    \caption{Demonstração de um falso positivo durante a avaliação da solução contra a base de dados ICDAR 2013}
     \label{fig:results_icdar13_01}
 \end{figure}
 
@@ -145,7 +145,7 @@ Outra dificuldade conhecida de problemas de reconhecimento de texto em cenas est
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Imagens autorais}\label{sec:results_own_images}
-Com caráter mais qualitativo, é interessante inferir a qualidade das soluções em imagens fora do contexto de datasets conhecidamente utilizados para treino e validação, para experienciar a qualidade do reconhecimento em imagens do dia-a-dia. Com esse objetivo, algumas imagens no álbum pessoal do autor deste trabalho foram selecionadas para passarem pela solução apresentada. Alguns exemplos estão disponíveis abaixo.
+Com caráter mais qualitativo, é interessante inferir a qualidade das soluções em imagens fora do contexto das bases de dados conhecidamente utilizadas para treino e validação, para experienciar a qualidade do reconhecimento em imagens do dia-a-dia. Com esse objetivo, algumas imagens no álbum pessoal do autor deste trabalho foram selecionadas para passarem pela solução apresentada. Alguns exemplos estão disponíveis abaixo.
 
 \begin{figure}
     \centering
@@ -196,4 +196,4 @@ O resultado final da prova de conceito de publicar a aplicação final em um amb
 
 O ambiente que é disponibilizado de graça pelo Heroku é bastante limitado em recursos, por questões óbvias, portanto já não era esperado uma boa performance, sobretudo pelo fato do ambiente não contar com aceleração gráfica.
 
-A partir de alguns testes sobre aplicação publicada, pode-se observar que o ambiente não é de fato estável para a aplicação que foi publicada. Ao requisitar a execução do reconhecimento em imagens menores do dataset ICDAR 2011, com dimensões próximas de 300px por 300px ainda é possível obter uma resposta do servidor, porém para imagens maiores e mais pesadas, a aplicação ultrapassa os limites de memória que tem disponível para o contêiner e, como medida de segurança imposta pelo Heroku, o contêiner é desligado sem conseguir terminar o processo de reconhecimento.
+A partir de alguns testes sobre aplicação publicada, pode-se observar que o ambiente não é de fato estável para a aplicação que foi publicada. Ao requisitar a execução do reconhecimento em imagens menores da base de dados ICDAR 2011, com dimensões próximas de 300px por 300px ainda é possível obter uma resposta do servidor, porém para imagens maiores e mais pesadas, a aplicação ultrapassa os limites de memória que tem disponível para o contêiner e, como medida de segurança imposta pelo Heroku, o contêiner é desligado sem conseguir terminar o processo de reconhecimento.
