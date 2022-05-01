@@ -14,7 +14,7 @@ profundas, ou seja, com mais camadas ocultas entre a entrada e a saída da rede.
 Uma das grandes diferenças entre aprendizado profundo e aprendizado de máquina é como a representação e extração de 
 características acontece automatizadamente em métodos de aprendizado profundo. A maior profundidade das redes permite 
 que características de diferentes níveis de abstração sejam montadas pelos diferentes níveis da rede 
-[\citeonline{DeepLearningATA}], o que contrasta bastante com a geral necessidade de etapas pré-processamento sobre os 
+[\citeonline{DeepLearningATA}], o que contrasta com a geral necessidade de etapas pré-processamento sobre os 
 dados de entrada de algoritmos de aprendizado de máquina para a montagem de características [\citeonline{MLDLVision, ReviewDL}]. 
 A Figura \ref{fig:dl_vs_ml} ilustra em alto nível essa diferença entre aprendizado de máquina e aprendizado profundo.
 
@@ -42,7 +42,7 @@ em diferentes grupos [\citeonline{ReviewDL}]:
     Dessa forma, o próprio algoritmo tentará derivar relacionamentos entre exemplos de modo a encontrar características intrínsecas aos dados de entrada.
 \end{itemize}
 
-Duas estruturas bastante populares de aprendizado profundo, as redes neurais convolucionais e as redes neurais recorrentes, serão 
+Duas estruturas populares de aprendizado profundo, as redes neurais convolucionais e as redes neurais recorrentes, serão 
 abordadas nas próximas seções. Ambas são base dos métodos de detecção e reconhecimento de texto utilizados ao longo do trabalho de graduação.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,7 +97,7 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
                 \item \textbf{Zero-Padding}: É a espessura da borda de zeros que deve ser aplicada na imagem pré-convolução. Durante a concepção 
                 de um modelo de CNN, é importante levar em consideração as dimensões da imagem de entrada e dos mapas de características de cada 
                 camada de convolução. É importante que os filtros consigam percorrer a imagem sem extrapolar nenhum índice durante as iterações. 
-                Aplicar o valor correto de \textit{Zero-Padding} e \textit{Stride} faz com que o tamanho dos mapas de características sejam bastante 
+                Aplicar o valor correto de \textit{Zero-Padding} e \textit{Stride} faz com que o tamanho dos mapas de características sejam 
                 previsíveis, o que facilita a modelagem.
             \end{itemize}
             
@@ -114,7 +114,7 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
             $max$ ou $average$, com o intuito de conservar as ativações mais predominantes de cada mapa de características.
             
     \item \textbf{Camada de Totalmente Conectada}:
-            A camada \textit{fully-connected} é bastante comum de ser aplicada no final do \textit{pipeline} de processamento de uma arquitetura de 
+            A camada \textit{fully-connected} é comum de ser aplicada no final do \textit{pipeline} de processamento de uma arquitetura de 
             CNN pela sua capacidade de decisão. Essa camada é mais parecida com a estrutura comum de redes neurais artificiais, onde existe uma ou mais 
             camadas de neurônios que recebem parcelas de ativação de todos os nós da camada anterior.
             
@@ -127,7 +127,7 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
                 softmax(y_j) = \frac{exp(y_j)}{\sum exp(y_j)}
             \end{equation}
             
-            Apesar de ser um componente bastante comum em arquiteturas de redes convolucionais, as camadas totalmente conectadas nem sempre estão 
+            Apesar de ser um componente comum em arquiteturas de redes convolucionais, as camadas totalmente conectadas nem sempre estão 
             presentes. Dependendo do propósito da rede, pode-se omitir a camada de classificação totalmente conectada e substituir por novas camadas 
             de convolução com filtros de dimensão 1 × 1 píxeis para fazer o mesmo trabalho de classificação ou ainda usar novas camadas para 
             de-convolução e \textit{up-sampling} para a saída da rede ser uma imagem segmentada semanticamente [\citeonline{FCN}]. Redes convolucionais 
@@ -141,8 +141,8 @@ Em contrapartida, nas redes convolucionais, cada nó da rede é ativado por uma 
 dessa forma, na operação de convolução, cada neurônio da rede tem a responsabilidade de identificar características de secções distintas da imagem de entrada.
 
 A partir do uso dos componentes mais comum e básicos de uma rede convolucional em diferentes composições, é possível configurar arquiteturas mais complexas. 
-Alguns trabalhos ao longo dos últimos anos exploraram bastante novas arquiteturas de redes convolucionais, como, por exemplo, VGG [\citeonline{VGG}], 
-ResNet [\citeonline{ResNet}] e GoogLeNet [\citeonline{GooLeNet}]. Uma base de imagens bastante utilizada por alguns desses trabalhos é o ImageNet 
+Alguns trabalhos ao longo dos últimos anos exploraram novas arquiteturas de redes convolucionais, como, por exemplo, VGG [\citeonline{VGG}], 
+ResNet [\citeonline{ResNet}] e GoogLeNet [\citeonline{GooLeNet}]. Uma base de imagens utilizada por alguns desses trabalhos é o ImageNet 
 [\citeonline{ImageNet}], que contém vasto número de exemplos que são base de uma competição de detecção e classificação de objetos, ILSVRC 
 (\textit{ImageNet Large Scale Visual Recognition Challenge}) [\citeonline{ILSVRC}]. Unindo a robustez e capacidade de representação de características das 
 redes convolucionais com a alta exposição a diversos exemplos através do ImageNet, as redes melhores colocadas no ILSVRC ao longo dos anos se tornaram 
@@ -152,7 +152,7 @@ por técnicas como o \textit{transfer-learning} [\citeonline{TransfLearn}].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Redes Neurais Recorrentes}
-As redes neurais recorrentes, abreviadas por RNN (\textit{Recurrent Neural Networks}, em inglês) são bastante populares no contexto de processamento de 
+As redes neurais recorrentes, abreviadas por RNN (\textit{Recurrent Neural Networks}, em inglês) são populares no contexto de processamento de 
 linguagem natural devido ao seu caráter de conseguir processar dados sequencialmente [\citeonline{ReviewDL}]. A principal característica das redes recorrentes 
 é que a predição no instante de tempo $T$ é estimulada pelo dado de entrada e pelo estado interno da rede no instante de tempo passado, $T - 1$. De maneira 
 simplista, essa característica se assemelha ao conceito de memória, onde a rede sempre considera tudo o que já foi processado em momentos anteriores para 
@@ -211,7 +211,7 @@ pois farão parte do desenvolvimento prático deste trabalho de graduação.
 Em momentos anteriores ao grande crescimento de popularidade do aprendizado profundo, as soluções de detecção de texto em cenas precisavam de profunda 
 análise e manuseio das imagens para conseguir identificar padrões em torno do problema a ser resolvido para que então fosse possível, manualmente, construir 
 e descrever uma série de características que seriam a base para identificar o texto na imagem. Todo esse processo é bastante artesanal, consumindo muito 
-tempo humano, e as características produzidas, em geral, são bastante especializadas no contexto de atuação, como citado por [\citeonline{DeepLearningATA}], 
+tempo humano, e as características produzidas, em geral, são especializadas no contexto de atuação, como citado por [\citeonline{DeepLearningATA}], 
 ou seja, o reuso de uma característica montada no contexto de detecção de texto em outros problemas, como, por exemplo, o processamento de linguagem natural, 
 seria difícil.
 
@@ -220,7 +220,7 @@ possível, de maneira geral, agrupar as soluções baseadas em aprendizado de m�
 
 \begin{itemize}
     \item Soluções baseadas no conceito CCA (\textit{Connected Components Analysis}, em inglês), que se baseiam em agregar regiões da imagem que 
-    compartilham características, como, por exemplo, cor, textura e extremidades [\citeonline{SurveyImagery}]. Dois trabalhos com bastante evidencia 
+    compartilham características, como, por exemplo, cor, textura e extremidades [\citeonline{SurveyImagery}]. Dois trabalhos relevantes 
     nesse segmento são os que originaram os métodos \textit{Stoke Width Transform} (SWT) [\citeonline{SWT}] e \textit{Maximum Stable Extremal Regions} 
     (MSER) [\citeonline{MSER}].
 
@@ -229,10 +229,10 @@ possível, de maneira geral, agrupar as soluções baseadas em aprendizado de m�
     classificador, treinados para detectar texto baseado em características construídas para tal.
 \end{itemize}
 
-A introdução de técnicas de aprendizado profundo na solução da detecção de texto expandiu o leque de possibilidades em torno de como lidar com o problema
-, o que movimentou bastante pesquisas sobre o tema, o que pode ser constatado com o número de novos trabalhos abordando o problema nas últimas duas décadas.
- Inicialmente, os primeiros trabalhos que aplicavam redes neurais as utilizavam como meio de extração de características, substituindo grande parte do 
- processo de engenharia de características específicas, para posteriormente aplicar os métodos de processamento de imagens e visão computacional já conhecidos.
+A introdução de técnicas de aprendizado profundo na solução da detecção de texto expandiu o leque de possibilidades em torno de como lidar com o problema, 
+o que movimentou pesquisas sobre o tema, o que pode ser constatado com o número de novos trabalhos abordando o problema nas últimas duas décadas.
+Inicialmente, os primeiros trabalhos que aplicavam redes neurais as utilizavam como meio de extração de características, substituindo grande parte do 
+processo de engenharia de características específicas, para posteriormente aplicar os métodos de processamento de imagens e visão computacional já conhecidos.
 
 Posteriormente, alguns conceitos e técnicas mais gerais de detecção de objetos foram trazidos para o contexto de reconhecimento de texto, o que criou, 
 de acordo com [\citeonline{DetcRecogWild}], três linhas de solução para o problema de detecção de texto, ilustradas na Figura \ref{fig:theory-detection-categories}:
@@ -267,7 +267,7 @@ de texto na parte prática deste trabalho de graduação.
 
 \subsubsection{CRAFT}\label{craft}
 \textit{Character Region Awareness for Text Detection} [\citeonline{CRAFT}], ou simplesmente CRAFT, é um método de detecção publicado por \citeauthor{CRAFT}, 
-pesquisadores da empresa coreana Naver Corporation\footnote{https://www.navercorp.com/en}, que apresentou resultados bastante competitivos quando comparado 
+pesquisadores da empresa coreana Naver Corporation\footnote{https://www.navercorp.com/en}, que apresentou resultados competitivos quando comparado 
 aos resultados estado-da-arte do momento, superando as melhores soluções do momento em acurácia de detecção com desempenho, capacidade de detecção em quadros 
 por segundo, competitiva com os melhores métodos já publicados.
 	
@@ -328,7 +328,7 @@ conforme explicado anteriormente e o treinamento da rede é refinado com esses n
     \label{fig:craft_char_level_annotation}
 \end{figure}
 
-O CRAFT conta com um pós-processamento bastante simplificado em cima dos mapas de probabilidade gerados pela rede com o intuito de calcular os 
+O CRAFT conta com um pós-processamento simplificado em cima dos mapas de probabilidade gerados pela rede com o intuito de calcular os 
 \textit{bounding-boxes} do texto localizado, que envolve, novamente com auxílio de métodos de visão computacional e processamento de imagem. Usando 
 binarização e categorização, é possível unir as regiões de caracteres e de afinidade para extrair as coordenadas dos menores retângulos que 
 encapsulam o resultado dessa união.
@@ -337,7 +337,7 @@ encapsulam o resultado dessa união.
 
 \subsection{Reconhecimento de Texto}
 A evolução do segmento de problemas voltados ao reconhecimento de texto, de forma análoga aos avanços observados nas soluções dos problemas de 
-detecção, também acelerou bastante com a popularização do aprendizado profundo. Soluções anteriores a aplicação do aprendizado profundo faziam 
+detecção, também foi acelerada pela popularização do aprendizado profundo. Soluções anteriores a aplicação do aprendizado profundo faziam 
 extenso uso de pré e pós processamento a partir de extração de características trabalhadas manualmente, como, por exemplo, HOG [\citeonline{HOG}], 
 aliado de algoritmos classificadores de aprendizado de máquina clássicos. Uma característica da maioria das soluções anteriores a adoção dos métodos 
 de aprendizado profundo é que seguem uma abordagem dita como \textit{bottom-up} [\citeonline{DetcRecogWild}], onde resolvem o reconhecimento ao nível 
@@ -360,7 +360,7 @@ Para introduzir com um pouco mais de detalhes um dos componentes base do desenvo
 
 \subsubsection{CRNN} \label{crnn}
 \textit{Convolutional Recurrent Neural Networks} [\citeonline{CRNN}], introduzido por \citeauthor{CRNN} é uma solução para o problema de reconhecimento 
-de texto bastante popular, sendo bastante citada em novos trabalhos e sempre presente em trabalhos comparativos. Este método veio para resolver grandes 
+de texto popular, sendo citada em novos trabalhos e sempre presente em trabalhos comparativos. Este método veio para resolver grandes 
 dificuldade das soluções anteriores, por exemplo: lidar com entradas e saídas de largura variados, possibilitar o aprendizado conhecido como fim-a-fim, 
 isto é, aplicar uma função de perda sobre o resultado do reconhecimento e essa perda ser propaganda para o aprendizado da rede extratora de características.
 
@@ -379,7 +379,7 @@ A rede recorrente implementada no CRNN é da variação LSTM (\textit{Long-Short
 onde existe muita variação na forma de como o texto é observado e carregar o contexto de sequências passadas e futuras é importante para diferenciar 
 caracteres ou possibilitar o reconhecimento de um caractere, por exemplo, uma letra um pouco mais larga.
 
-Os resultados obtidos foram bastante competitivos quando comparados aos métodos de reconhecimento anteriores, até mesmo superiores aos que já usavam 
+Os resultados obtidos foram competitivos quando comparados aos métodos de reconhecimento anteriores, até mesmo superiores aos que já usavam 
 os conceitos de aprendizado profundo, com o adicional de prover meios de aprendizado integrado da rede convolucional e recorrente como uma unidade, 
 além de um modelo bem mais enxuto em número de parâmetros [\citeonline{CRNN}].
 

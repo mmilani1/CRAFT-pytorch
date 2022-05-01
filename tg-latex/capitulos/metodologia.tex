@@ -58,9 +58,9 @@ experimentado, códigos oficiais e re-implementações publicas dos seguintes tr
 \end{itemize}
 
 Por fim, o que foi mais acessível em relação aos pontos citados anteriormente foi o código-fonte do CRAFT. Os autores desenvolveram o modelo em 
-Python, usando o framework PyTorch\footnote{https://pytorch.org}, sendo bastante difundido na comunidade, facilitando na escolha de projetos para 
+Python, usando o framework PyTorch\footnote{https://pytorch.org}, biblioteca popular na comunidade, facilitando na escolha de projetos para 
 integrar o reconhecimento de texto. Os autores também disponibilizaram os modelos pré-treinados para detecção de texto em cenas, o que é um 
-grande diferencial, já que os procedimentos de treinamento dessas soluções não são triviais, além de costumarem ser bastante custosos temporal 
+grande diferencial, já que os procedimentos de treinamento dessas soluções não são triviais, além de costumarem ser custosos temporal 
 e computacionalmente, o que desviaria o foco do objetivo desse trabalho. Adicionalmente, o código-fonte contém instruções minímas de como executar 
 o modelo pré-treinado, que se mostraram suficientes para iniciantes sem muita experiencia prévia com a linguagem de programação e em trabalhos 
 de detecção de texto. Outro diferencial foi a possibilidade de executar o modelo pré-treinado em equipamento físico sem aceleração gráfica, mesmo 
@@ -69,8 +69,8 @@ atual de cripto-moedas e escassez de processadores gráficos no mercado.
 
 Agora sobre a escolha do método de reconhecimento, como o detector escolhido usa a linguagem Python e o framework PyTorch, a lista de métodos 
 disponíveis foi filtrada por esses critérios. Uma implementação do CRNN em PyTorch foi escolhida, pois, atendia os critérios de compatibilidade 
-com a linguagem, framework e bibliotecas que o CRAFT depende, aliado ao fato do CRNN ser uma solução bastante popular, com implementação bastante 
-sucinta e, novamente, de fácil execução a partir de um modelo pré-treinado, o que também foi fornecido pelo autor da implementação.
+com a linguagem, framework e bibliotecas que o CRAFT depende, aliado ao fato do CRNN ser uma solução popular, com implementação sucinta e, 
+novamente, de fácil execução a partir de um modelo pré-treinado, o que também foi fornecido pelo autor da implementação.
 
 Durante todo o processo de experimentação e de desenvolvimento, a plataforma Paperspace\footnote{https://www.paperspace.com} foi de grande valor. 
 A Paperspace é uma empresa provedora de computação em nuvem especializada em infraestrutura para aplicações de aprendizado de máquina, disponibilizando 
@@ -125,7 +125,7 @@ todos os pacotes instalados em um ambiente virtual para que, a partir desse arqu
 configurações manuais novamente.
 
 Entrando mais no caminho percorrido para integrar as duas soluções, a primeira etapa foi replicar os repositórios para a conta pessoal do autor no GitHub. 
-Esse processo na plataforma Github se chama \textit{fork} e, em geral, é bastante utilizado para possibilitar que outras pessoas consigam desenvolver coisas 
+Esse processo na plataforma Github se chama \textit{fork} e, em geral, é utilizado para possibilitar que outras pessoas consigam desenvolver coisas 
 novas a partir da base de código original sem ter o risco de empurrar mudanças no repositório original inadvertidamente. Dessa forma, ambos os repositórios 
 foram replicados para a conta pessoal do autor e todo o desenvolvimento deste trabalho foi feito nos repositórios replicados.
 

@@ -111,7 +111,7 @@ profundas para reconhecimento de texto. [\citeonline{StrDlEra}]
 
 O ICDAR 2011 apresenta casos mais complexos de detecção de reconhecimento de texto se comparado ao contexto de aplicações OCR 
 convencionais, que lidam com reconhecimento de texto estruturado, sem grandes variações de fontes e planos de fundo, o que é 
-bastante válido para avaliar a solução. No entanto, ainda não são casos reais de texto em cena, problema que motivou este trabalho. 
+válido para avaliar a solução. No entanto, ainda não são casos reais de texto em cena, problema que motivou este trabalho. 
 A base de dados ICDAR 2013 contém exemplos mais característicos de texto de cena.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -226,7 +226,7 @@ apresentada. Alguns exemplos estão disponíveis abaixo.
     \label{fig:results_own_images_02}
 \end{figure}
 
-Algumas imagens utilizadas foram bastante desafiadoras para a solução, tanto em localização quanto em reconhecimento. Imagens 
+Algumas imagens utilizadas foram desafiadoras para a solução, tanto em localização quanto em reconhecimento. Imagens 
 com texto bem localizado e visível, alguns letreiros e placas tiveram bons resultados, mas alguns casos de palavras mais longas 
 e curvadas, mesmo que levemente, não tiveram muito sucesso, especialmente se apresentarem caligrafia muito estilizadas, como é 
 possível observar na Figura \ref{fig:results_own_images_03}. A respeito de textos curvados, melhorias na solução poderiam 
@@ -237,19 +237,19 @@ curvatura possível, facilitando o trabalho de reconhecimento.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{figs/resultados-autoral-03.png}
-    \caption{Exemplo de imagem autoral com fontes bastante estilizadas que trouxeram dificuldade tanto para a detecção, quanto 
+    \caption{Exemplo de imagem autoral com fontes estilizadas que trouxeram dificuldade tanto para a detecção, quanto 
     para o reconhecimento. Textos reconhecidos: “sey” e “fpan”.}
     \label{fig:results_own_images_03}
 \end{figure}
 
 
-Um exemplo foi bastante interessante, pois contrariou as expectativas quanto ao reconhecimento, demonstrando o potencial que a 
+Um exemplo foi interessante, pois contrariou as expectativas quanto ao reconhecimento, demonstrando o potencial que a 
 solução pode apresentar com algumas iterações de melhorias. A Figura \ref{fig:results_own_images_04} mostra um caso de sucesso 
-na localização e reconhecimento onde o contexto onde o texto está inserido tem bastante informação e a fonte do texto, 
+na localização e reconhecimento onde o contexto onde o texto está inserido tem muita informação e a fonte do texto, 
 principalmente do trecho escrito “Disney’s”, é bastante estilizado, e mesmo assim, o reconhecimento foi bem preciso.
 
 
-Agora, quando o texto se encontra em situações bastante favoráveis, por exemplo, bem iluminado, sem oclusões, em geral, disposto 
+Agora, quando o texto se encontra em situações favoráveis, por exemplo, bem iluminado, sem oclusões, em geral, disposto 
 horizontalmente e com caligrafia não rebuscada, a solução atinge o seu potencial máximo, conseguindo localizar e interpretar 
 com muita precisão. A Figura \ref{fig:results_own_images_05} demonstra esse caso, onde temos um cartaz de boas-vindas do 
 museu do Apartheid, na África do Sul.
@@ -277,7 +277,7 @@ sucesso. Ao final de todas as etapas citadas em \ref{sec:methodology_cloud_deplo
 Heroku com sucesso. No entanto, como constatado na Seção \ref{sec:results_icdar_2011}, a demanda de recursos computacionais da 
 solução integrada foi é relativamente grande, em especial a pressão sobre disponibilidade de memória RAM no sistema é grande.
 
-O ambiente disponibilizado de graça pelo Heroku é bastante limitado em recursos, por questões óbvias, portanto já não era esperado 
+O ambiente disponibilizado de graça pelo Heroku é limitado em recursos, por questões óbvias, portanto já não era esperado 
 um bom desempenho, sobretudo pelo fato do ambiente não contar com aceleração gráfica.
 
 A partir de alguns testes sobre aplicação publicada, pode-se observar que o ambiente não é de fato estável para a aplicação publicada. 
