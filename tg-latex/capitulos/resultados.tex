@@ -15,7 +15,7 @@ processador Intel Xeon E5-2666, com frequência de operação em 2,9 GHz.
 
 Apesar do maior tempo de processamento, o uso da solução em ambientes sem uma placa gráfica compatível ainda não se torna 
 inviável, sobretudo considerando que a média de tempo de processamento por imagem foi de 2,32 segundos. No entanto, fica 
-desencorajado a execução sobre um conjunto muito grande de imagens, já que o processamento corresponde a uma carga muito 
+desencorajado a execução sobre um conjunto extenso de imagens, já que o processamento corresponde a uma carga muito 
 alta dependendo do \textit{hardware} onde a solução for executada, visto que a execução em CPU alocou 17,4 GB de memória, 
 volume maior do que a quantidade total de grande parte dos sistemas mais domésticos.
 
@@ -75,7 +75,7 @@ mas sim onde ele errou e identificar limitações e, eventualmente, futuras otim
 
 Um dos casos mais evidentes onde a solução apresentou problemas foi na presença de caracteres especiais. Uma das limitações do 
 modelo de reconhecimento é a lista de caracteres passíveis de reconhecimento, que contempla apenas os caracteres do alfabeto da 
-língua inglesa, de A até Z, adicionado dos dígitos decimais, de 0 até 9. Este dicionário limitado restringe muito a capacidade 
+língua inglesa, de A até Z, adicionado dos dígitos decimais, de 0 até 9. Este dicionário limitado restringe a capacidade 
 de detecção em que não são tão difíceis de observar. Caracteres de pontuação, acentos, marcações como o cifrão (\$), entre 
 outros casos, acabam dificultando o acerto do reconhecimento. A Figura \ref{fig:results_icdar11_02} exemplifica esta constatação. 
 Nela, é possível observar que o trecho que representa o preço do artigo anunciado na imagem 5 do conjunto de validação, que 
@@ -221,14 +221,14 @@ apresentada. Alguns exemplos estão disponíveis abaixo.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figs/resultados-autoral-02.png}
-    \caption{Exemplo de imagem autoral onde uma região de texto muito longa não foi extraída muito bem, principalmente no início 
+    \caption{Exemplo de imagem autoral onde uma região de texto longa não foi extraída com sucesso, principalmente no início 
     da palavra, o que dificultou o reconhecimento. Texto reconhecido: “permmusem”.}
     \label{fig:results_own_images_02}
 \end{figure}
 
 Algumas imagens utilizadas foram desafiadoras para a solução, tanto em localização quanto em reconhecimento. Imagens 
 com texto bem localizado e visível, alguns letreiros e placas tiveram bons resultados, mas alguns casos de palavras mais longas 
-e curvadas, mesmo que levemente, não tiveram muito sucesso, especialmente se apresentarem caligrafia muito estilizadas, como é 
+e curvadas, mesmo que levemente, não tiveram amplo sucesso, especialmente se apresentarem caligrafia estilizadas, como é 
 possível observar na Figura \ref{fig:results_own_images_03}. A respeito de textos curvados, melhorias na solução poderiam 
 melhorar a situação, como a aplicação de soluções para transformar as imagens antes de passar pelo reconhecimento como, por 
 exemplo, uma rede STN (\textit{Spatial Transformer Network} [\citeonline{STN}]), de modo a obter uma imagem com o mínimo de 

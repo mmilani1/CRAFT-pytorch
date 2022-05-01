@@ -136,7 +136,7 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
 
 Quando aplicado a entradas visuais em forma de imagens, o tamanho final do modelo treinado e o número total de parâmetros de uma rede CNN é menor se 
 comparada com uma rede neural convencional. Em [\citeonline{IntroCNN}] é exemplificado uma rede neural convencional, por serem densas, ou seja, os 
-neurônios das camadas da rede são todos interligados, o número de parâmetros treinados da rede cresce muito rápido com as dimensões da imagem de entrada. 
+neurônios das camadas da rede são todos interligados, o número de parâmetros treinados da rede cresce rápido com as dimensões da imagem de entrada. 
 Em contrapartida, nas redes convolucionais, cada nó da rede é ativado por uma secção da imagem de entrada, descrito pelo hiper-parâmetro \textit{Receptive-Field}, 
 dessa forma, na operação de convolução, cada neurônio da rede tem a responsabilidade de identificar características de secções distintas da imagem de entrada.
 
@@ -172,13 +172,13 @@ onde dois exemplos são redes recorrentes profundas, duas ou mais RNNs empilhada
 profundas ou não, que lidam com problemas onde o contexto a \textit{priori} e a \textit{posteriori} são importantes.
 
 Apesar das redes neurais recorrentes, na sua forma original, conseguirem lidar com entradas e saídas sequenciais de tamanhos arbitrários, empiricamente 
-demonstrou problemas ao lidar com sequências muito longas, principalmente uma grande sensibilidade aos problemas de explosão e desaparecimento de gradiente 
+demonstrou problemas ao lidar com sequências longas, principalmente uma grande sensibilidade aos problemas de explosão e desaparecimento de gradiente 
 em métodos de treinamento baseados em propagação do erro de predição [\citeonline{VanishGrad}]. Para lidar com esse problema, novas variantes de redes 
 recorrentes foram idealizadas, sendo a que mais se popularizou foi a LSTM, abreviação para \textit{Long Short-Term Memory} [\citeonline{LSTM}].
 
 A principal mudança entre a rede RNN convencional para a rede LSTM foi a introdução de uma nova estrutura capaz de aprender a preservar contexto histórico 
 na rede e podem ser interpretados como células de memória. A partir de novos meios treináveis de adicionar, preservar e limpar informações dessa célula, a 
-rede se tornou muito mais capaz e eficiente na gestão dos parâmetros responsáveis por segurar o contexto histórico da rede, mitigando os problemas de 
+rede se tornou mais capaz e eficiente na gestão dos parâmetros responsáveis por segurar o contexto histórico da rede, mitigando os problemas de 
 \textit{Vanishing} e \textit{Exploding Gradients}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -187,7 +187,7 @@ rede se tornou muito mais capaz e eficiente na gestão dos parâmetros responsá
 \textit{Optical Character Recognition}, abreviado por OCR, e mais especificamente Scene Text Recognition, abreviado por STR, podem ser atacados como um 
 sub-conjunto de problemas de identificação de objetos [\citeonline{DetcRecogWild, StrDlEra}] e esse fato trouxe diversas adaptações de métodos mais clássicos 
 de detecção de objetos para o contexto de detecção de texto. O exemplo mais convencional de OCR, a detecção de texto manuscrito ou impresso, apesar de ser 
-desafiador (em especial o caso de manuscritos), é tido como muito bem resolvido, com soluções de sucesso aplicadas em larga escala 
+desafiador (em especial o caso de manuscritos), é tido como bem resolvido, com soluções de sucesso aplicadas em larga escala 
 [\citeonline{DetcRecogWild, WhatIsWrongSTR}], na maioria por apresentarem um contexto mais simples onde o texto está inserido, com planos de fundo mais 
 consistentes, com menos ruídos, e padrões de mais fácil detecção quando comparado aos casos de STR.
 

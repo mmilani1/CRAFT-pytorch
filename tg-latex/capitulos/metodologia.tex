@@ -223,7 +223,7 @@ utilizando as ferramentas de avaliação disponibilizadas pela plataforma RRC.
 
 \subsection{Base de Dados}\label{sec:methodology_datasets}
 
-Conforme mencionado anteriormente, as bases de dados dos desafios vinculados ao ICDAR são muito utilizados por trabalhos voltados à detecção e 
+Conforme mencionado anteriormente, as bases de dados dos desafios vinculados ao ICDAR são utilizados por trabalhos voltados à detecção e 
 reconhecimento de texto. Ambos os modelos utilizados no desenvolvimento deste trabalho referem-se às bases de dados ICDAR: O CRAFT cita as bases 
 de dados ICDAR 2013 [\citeonline{ICDAR2013}], ICDAR 2015 [\citeonline{ICDAR2015}] e ICDAR 2017 [\citeonline{ICDAR2017}] como bases de treinamento 
 e de validação em quanto o CRNN se refere ao ICDAR 2003 [\citeonline{ICDAR2003}] e ICDAR 2013 como bases de imagens para validação. As bases de 
@@ -376,12 +376,12 @@ com a ajuda do framework Flask, consegue receber um arquivo de imagem enviado pe
 Por fim, quando o reconhecimento termina, o retorno do método é a lista de palavras reconhecidas, que, automaticamente, é respondido ao cliente que 
 realizou a requisição.
 
-Com essas poucas mudanças já é possível, de maneira miníma e muito simplificada, atender pedidos de reconhecimento de texto sob demanda. O próximo 
+Com essas poucas mudanças já é possível, de maneira miníma e simplificada, atender pedidos de reconhecimento de texto sob demanda. O próximo 
 passo adotado utilizou ferramentas e conceitos voltados a conteinerização da aplicação para facilitar a execução no ambiente remoto, discutidos na 
 próxima seção.
 
 \subsection{Contêiner, Docker e Publicação}
-Uma prática muito usual ao utilizar a computação em nuvem como meio de hospedar aplicações é gerar arquivos executáveis contendo tudo o que a aplicação 
+Uma prática popular ao utilizar a computação em nuvem como meio de hospedar aplicações é gerar arquivos executáveis contendo tudo o que a aplicação 
 precisa para funcionar: A base de código, as dependências, os binários, as configurações e tudo mais que for necessário, de maneira consistente e de 
 fácil reprodutibilidade. Esse processo é por vezes chamado conteinerização, onde um contêiner é esse agregado do código da aplicação e tudo o que for 
 ecessário para executá-la, de fato sendo executado. Uma das tecnologias de contêiner mais utilizadas é o Docker [\citeonline{Docker}]. Mais detalhes 
