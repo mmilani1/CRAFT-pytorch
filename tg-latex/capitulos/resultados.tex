@@ -4,7 +4,7 @@
 \subsection{ICDAR 2011}\label{sec:results_icdar_2011}
 O conjunto de imagens de validação do ICDAR 2011 conta com 141 imagens e é importante constatar o fato que são imagens de 
 relativa baixa resolução para os padrões atuais, onde as maiores contêm cerca de 315 mil píxeis. São caracterizadas por 
-estarem no contexto de imagens de anúncios e anexos de e-mails, com textos primariamente horizontais.
+estarem no contexto de imagens de anúncios e anexos de \textit{e-mails}, com textos primariamente horizontais.
 
 Ao aplicar a solução sobre os exemplos de validação da base de dados, em desempenho, todas as imagens foram processadas com 
 sucesso em 36,31 segundos em um ambiente com aceleração gráfica, média de 257 milissegundos por imagem. Para fins comparativos, 
@@ -55,7 +55,7 @@ O F1-Score é basicamente a média harmônica das métricas precisão e \textit{
     \label{tab:icdar11_results}
 \end{table}
 
-Em resumo, isso demonstra que a cada 100 palavras detectadas e processadas, aproximadamente 70 tiveram o texto corretamente 
+Em resumo, isso demonstra que a cada 100 palavras detectadas e processadas, cerca de 70 tiveram o texto corretamente 
 extraído. É um resultado satisfatório para o trabalho desenvolvido e o nível de simplicidade adotado. Estes números colocariam 
 essa solução em nono lugar entre 18 outros trabalhos submetidos na plataforma de desafios \textit{Robust Reading Competition}.
 
@@ -91,7 +91,7 @@ reconhecendo o cifrão (\$) como um cinco (5) e o asterisco (*) como a letra X, 
 
 Outra dificuldade ficou aparente em imagens de baixa resolução, que acabam contendo regiões de texto ainda menores. Em geral, 
 a regressão das \textit{bounding-boxes} fica um pouco mais grosseira, mas ainda satisfatórias. Entretanto, a maior limitação 
-foi o reconhecimento. As regiões de texto recortadas da imagem original acabam ficando bem pequenas e com pouca definição, o 
+foi o reconhecimento. As regiões de texto recortadas da imagem original acabam ficando pequenas e com pouca definição, o 
 que trouxe dificuldades para o modelo pré-treinado CRNN utilizado. A Figura \ref{fig:results_icdar11_03} exemplifica essa 
 dificuldade. Pode-se observar que nenhum dos “títulos” de cada uma das fotos que estão presentes na Figura \ref{fig:results_icdar11_03} 
 foram localizadas com sucesso, mas não obtiveram a igualdade entre predição e gabarito (ficaram marcadas com uma área azul).
@@ -99,7 +99,7 @@ foram localizadas com sucesso, mas não obtiveram a igualdade entre predição e
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figs/resultados-icdar11-03.png}
-    \caption{Exemplo de imagem com instâncias de texto bem pequenas em resolução. Imagem 28 do ICDAR 2011}
+    \caption{Exemplo de imagem com instâncias de texto pequenas em resolução. Imagem 28 do ICDAR 2011}
     \label{fig:results_icdar11_03}
 \end{figure}
 
@@ -120,7 +120,7 @@ A base de dados ICDAR 2013 contém exemplos mais característicos de texto de ce
 
 O conjunto de imagens de validação do ICDAR 2013 conta com 233 imagens de tamanhos variados. As menores têm cerca de 640 píxeis 
 de altura e 480 píxeis de comprimento, enquanto as maiores têm dimensões comparáveis à resolução 4K, com 3888 píxeis de altura e 
-2592 píxeis de comprimento. Vale ressaltar que as imagens passam por uma redução em resolução ao entrarem no modelo CRAFT, que 
+2592 píxeis de largura. Vale ressaltar que as imagens passam por uma redução em resolução ao entrarem no modelo CRAFT, que 
 maximiza a maior dimensão da imagem para 1280 píxeis e ajusta a segunda dimensão mantendo a relação de aspecto original, justamente 
 para otimizar o desempenho do método.
 
@@ -173,7 +173,7 @@ na base ICDAR 2011. Caracteres especiais, pontuação e acentos são limitaçõe
 
 Por introduzir mais exemplos de imagens verdadeiramente com textos em ambientes naturais, algumas novas dificuldades apareceram. 
 O desafio que provavelmente é mais evidente está relacionado aos eventuais artefatos nas imagens decorrentes de reflexos em 
-algumas imagens de texto sob vidro ou com incidência de iluminação de alta intensidade (\textit{flashes} de câmeras fotográficas), 
+algumas imagens de texto sob vidro ou com incidência de iluminação de alta intensidade (\textit{flash} de câmeras fotográficas), 
 onde, em alguns exemplos, a detecção foi sub-ótima (Figura \ref{fig:results_icdar13_03}) e em outros, o reconhecimento não foi 
 o melhor (Figura \ref{fig:results_icdar13_02}).
 
@@ -228,10 +228,10 @@ apresentada. Alguns exemplos estão disponíveis abaixo.
 
 Algumas imagens utilizadas foram desafiadoras para a solução, tanto em localização quanto em reconhecimento. Imagens 
 com texto bem localizado e visível, alguns letreiros e placas tiveram bons resultados, mas alguns casos de palavras mais longas 
-e curvadas, mesmo que levemente, não tiveram amplo sucesso, especialmente se apresentarem caligrafia estilizadas, como é 
+e curvadas, mesmo que levemente, não tiveram amplo sucesso, especialmente se apresentarem caligrafia estilizada, como é 
 possível observar na Figura \ref{fig:results_own_images_03}. A respeito de textos curvados, melhorias na solução poderiam 
 melhorar a situação, como a aplicação de soluções para transformar as imagens antes de passar pelo reconhecimento como, por 
-exemplo, uma rede STN (\textit{Spatial Transformer Network} [\citeonline{STN}]), de modo a obter uma imagem com o mínimo de 
+exemplo, uma rede STN (\textit{Spatial Transformer Network} [\citeonline{STN}]), para obter uma imagem com o mínimo de 
 curvatura possível, facilitando o trabalho de reconhecimento.
 
 \begin{figure}
@@ -246,10 +246,10 @@ curvatura possível, facilitando o trabalho de reconhecimento.
 Um exemplo foi interessante, pois contrariou as expectativas quanto ao reconhecimento, demonstrando o potencial que a 
 solução pode apresentar com algumas iterações de melhorias. A Figura \ref{fig:results_own_images_04} mostra um caso de sucesso 
 na localização e reconhecimento onde o contexto onde o texto está inserido tem muita informação e a fonte do texto, 
-principalmente do trecho escrito “Disney’s”, é bastante estilizado, e mesmo assim, o reconhecimento foi bem preciso.
+principalmente do trecho escrito “Disney’s”, é bastante estilizado, e mesmo assim, o reconhecimento foi preciso.
 
 
-Agora, quando o texto se encontra em situações favoráveis, por exemplo, bem iluminado, sem oclusões, em geral, disposto 
+Agora, quando o texto se encontra em situações favoráveis, por exemplo, adequadamente iluminado, sem oclusões, em geral, disposto 
 horizontalmente e com caligrafia não rebuscada, a solução atinge o seu potencial máximo, conseguindo localizar e interpretar 
 com muita precisão. A Figura \ref{fig:results_own_images_05} demonstra esse caso, onde temos um cartaz de boas-vindas do 
 museu do Apartheid, na África do Sul.
@@ -272,15 +272,15 @@ museu do Apartheid, na África do Sul.
 
 
 \section{Disponibilização em nuvem}
-O resultado da prova de conceito de publicar a aplicação final em um ambiente remoto através de computação em nuvem foi de relativo 
-sucesso. Ao final de todas as etapas citadas em \ref{sec:methodology_cloud_deploy}, a aplicação foi publicada na plataforma do 
+O resultado da prova de conceito de implantar a aplicação final em um ambiente remoto através de computação em nuvem foi de relativo 
+sucesso. Ao final de todas as etapas citadas em \ref{sec:methodology_cloud_deploy}, a aplicação foi implantada na plataforma do 
 Heroku com sucesso. No entanto, como constatado na Seção \ref{sec:results_icdar_2011}, a demanda de recursos computacionais da 
 solução integrada foi é relativamente grande, em especial a pressão sobre disponibilidade de memória RAM no sistema é grande.
 
 O ambiente disponibilizado de graça pelo Heroku é limitado em recursos, por questões óbvias, portanto já não era esperado 
 um bom desempenho, sobretudo pelo fato do ambiente não contar com aceleração gráfica.
 
-A partir de alguns testes sobre aplicação publicada, pode-se observar que o ambiente não é de fato estável para a aplicação publicada. 
+A partir de alguns testes sobre aplicação implantada, pode-se observar que o ambiente não é de fato estável. 
 Ao requisitar a execução do reconhecimento em imagens menores da base de dados ICDAR 2011, com dimensões próximas de 300px por 300px 
 ainda é possível obter uma resposta do servidor, porém para imagens maiores e mais pesadas, a aplicação ultrapassa os limites de 
 memória que tem disponível para o contêiner e, como medida de segurança imposta pelo Heroku, o contêiner é desligado sem conseguir 

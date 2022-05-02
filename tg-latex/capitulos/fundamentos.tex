@@ -14,7 +14,7 @@ profundas, ou seja, com mais camadas ocultas entre a entrada e a saída da rede.
 Uma das grandes diferenças entre aprendizado profundo e aprendizado de máquina é como a representação e extração de 
 características acontece automatizadamente em métodos de aprendizado profundo. A maior profundidade das redes permite 
 que características de diferentes níveis de abstração sejam montadas pelos diferentes níveis da rede 
-[\citeonline{DeepLearningATA}], o que contrasta com a geral necessidade de etapas pré-processamento sobre os 
+[\citeonline{DeepLearningATA}], o que contrasta com a geral necessidade de etapas de pré-processamento sobre os 
 dados de entrada de algoritmos de aprendizado de máquina para a montagem de características [\citeonline{MLDLVision, ReviewDL}]. 
 A Figura \ref{fig:dl_vs_ml} ilustra em alto nível essa diferença entre aprendizado de máquina e aprendizado profundo.
 
@@ -36,7 +36,7 @@ em diferentes grupos [\citeonline{ReviewDL}]:
 
     \item Algoritmos de aprendizado semi-supervisionado: assim como o nome sugere, é uma abordagem válida quando não existe grande 
     volume de dados com as anotações necessárias. Ainda assim, a depender da aplicação, a existência de um volume menor de dados 
-    anotados pode ser melhor que nenhum dado anotado, portanto ainda possuem grande valor no treinamento.
+    anotados pode ser melhor que nenhum dado anotado, portanto ainda são importantes no treinamento.
 
     \item Algoritmos de aprendizado não supervisionado: É aplicável quando não existem bases de dados em volume com exemplos anotados. 
     Dessa forma, o próprio algoritmo tentará derivar relacionamentos entre exemplos de modo a encontrar características intrínsecas aos dados de entrada.
@@ -51,16 +51,16 @@ abordadas nas próximas seções. Ambas são base dos métodos de detecção e r
 As redes neurais convolucionais, abreviadas por CNN pelo nome em inglês \textit{Convolutional Neural Network}, é um modelo de rede neural 
 com inspiração no córtex visual animal, uma estrutura cerebral que processa os estímulos visuais originados a partir dos olhos. Apesar da 
 inspiração e o foco inicial em problemas de visão computacional, atualmente é um conceito já aplicado em outros segmentos de pesquisa, 
-como processamento de sinais, processamento de voz e linguagem, para citar algumas dessas aplicações. [\citeonline{ReviewDL, 1DCNN}]
+como processamento de sinais, processamento de voz e linguagem, para citar algumas dessas aplicações [\citeonline{ReviewDL, 1DCNN}].
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figs/theory-cnn-example.png}
-    \caption{Exemplo de rede convolucional, ilustrando as camadas ocultas da rede neural. Fonte [\citeonline{ReviewDL}]}
+    \caption{Exemplo de rede convolucional, ilustrando as camadas da rede neural. Fonte [\citeonline{ReviewDL}]}
     \label{fig:theory-cnn-example}
 \end{figure}
 
-As arquiteturas de redes convolucionais mais comuns são, em geral, composições de diferentes de três categorias de camadas, observáveis 
+As arquiteturas de redes convolucionais mais comuns são, em geral, composições de camadas de diferentes categorias, observáveis 
 a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito específico:
 
 \begin{enumerate}
@@ -68,10 +68,10 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
             A camada de convolução tem como papel processar a imagem de entrada e extrair mapas de características baseado na aplicação 
             de diferentes filtros bi-dimensionais (ou \textit{kernels}) sobre a imagem em uma operação de convolução, de forma análoga ao 
             uso de filtros morfológicos, no âmbito de processamento de imagem. Para cada filtro aplicado nas camadas de convolução, uma nova 
-            representação dos dados de entrada é gerada, sendo comumente chamado mapa de características. As camadas mais rasas em geral 
+            representação dos dados de entrada é gerada, sendo comumente chamado mapa de características. As camadas iniciais em geral 
             conseguem entender características de mais alto nível, menos abstratas, por estarem mais próximas da entrada de dados. Camadas mais 
             profundas extraem características mais abstratas, já que são ativadas por mapas de características provenientes das camadas mais 
-            rasas [\citeonline{IntoMLNNDL}].
+            iniciais [\citeonline{IntoMLNNDL}].
         
             A introdução de não-linearidade nas redes convolucionais decorre da aplicação de funções de ativação, normalmente ao final da 
             operação de convolução. A função de ativação mais comum é a ReLU (\textit{Rectified Linear Unit}, em inglês), um dos motivos é a 
@@ -85,20 +85,20 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
             
             Ainda sobre a camada de convolução, existem quatro hiper-parâmetros que uma breve introdução se faz necessária:
             \begin{itemize}
-                \item \textbf{Stride}: É o passo da aplicação do filtro sobre a imagem. \textit{Stride} igual a um significa que a convolução 
-                vai percorrer a imagem de pixel em pixel
+                \item \textbf{\textit{Stride}}: É o passo da aplicação do filtro sobre a imagem. \textit{Stride} igual a um significa que a convolução 
+                percorrerá a imagem de píxel em píxel.
 
-                \item \textbf{Receptive-Field}: É o tamanho dos filtros aplicados à imagem. \textit{Receptive-Field} igual a dois significa 
-                que os filtros têm dimensões 2x2 pixels.
+                \item \textbf{\textit{Receptive-Field}}: É o tamanho dos filtros aplicados à imagem. \textit{Receptive-Field} igual a dois significa 
+                que os filtros têm dimensões 2 × 2 píxeis.
 
-                \item \textbf{Depth}: É a profundidade de cada mapa de características e está diretamente relacionado ao número de 
-                filtros que são aplicados à imagem.
+                \item \textbf{\textit{Depth}}: É a profundidade de cada mapa de características e está diretamente relacionado ao número de 
+                filtros aplicados à imagem.
 
-                \item \textbf{Zero-Padding}: É a espessura da borda de zeros que deve ser aplicada na imagem pré-convolução. Durante a concepção 
-                de um modelo de CNN, é importante levar em consideração as dimensões da imagem de entrada e dos mapas de características de cada 
+                \item \textbf{\textit{Zero-Padding}}: É a espessura da borda de zeros que deve ser aplicada na imagem pré-convolução. Durante a concepção 
+                de um modelo de CNN, é importante considerar as dimensões da imagem de entrada e dos mapas de características de cada 
                 camada de convolução. É importante que os filtros consigam percorrer a imagem sem extrapolar nenhum índice durante as iterações. 
                 Aplicar o valor correto de \textit{Zero-Padding} e \textit{Stride} faz com que o tamanho dos mapas de características sejam 
-                previsíveis, o que facilita a modelagem.
+                previsíveis, facilitando a modelagem.
             \end{itemize}
             
     \item \textbf{Camada de Pooling}:
@@ -131,7 +131,7 @@ a partir da Figura \ref{fig:theory-cnn-example}, cada uma com um propósito espe
             presentes. Dependendo do propósito da rede, pode-se omitir a camada de classificação totalmente conectada e substituir por novas camadas 
             de convolução com filtros de dimensão 1 × 1 píxeis para fazer o mesmo trabalho de classificação ou ainda usar novas camadas para 
             de-convolução e \textit{up-sampling} para a saída da rede ser uma imagem segmentada semanticamente [\citeonline{FCN}]. Redes convolucionais 
-            que não contam com as últimas camadas densas e utilizam camadas convolucionais no seu lugar são normalmente chamadas de FCN, \textit{Fully-Convolutional-Networks}.
+            que não contam com as últimas camadas densas e utilizam camadas convolucionais no seu lugar são normalmente chamadas FCN, \textit{Fully-Convolutional-Networks}.
 \end{enumerate}
 
 Quando aplicado a entradas visuais em forma de imagens, o tamanho final do modelo treinado e o número total de parâmetros de uma rede CNN é menor se 
@@ -184,10 +184,10 @@ rede se tornou mais capaz e eficiente na gestão dos parâmetros responsáveis p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Evolução do \textit{Scene Text Recognition}}
-\textit{Optical Character Recognition}, abreviado por OCR, e mais especificamente Scene Text Recognition, abreviado por STR, podem ser atacados como um 
+\textit{Optical Character Recognition}, abreviado por OCR, e mais especificamente \textit{Scene Text Recognition}, abreviado por STR, podem ser atacados como um 
 sub-conjunto de problemas de identificação de objetos [\citeonline{DetcRecogWild, StrDlEra}] e esse fato trouxe diversas adaptações de métodos mais clássicos 
 de detecção de objetos para o contexto de detecção de texto. O exemplo mais convencional de OCR, a detecção de texto manuscrito ou impresso, apesar de ser 
-desafiador (em especial o caso de manuscritos), é tido como bem resolvido, com soluções de sucesso aplicadas em larga escala 
+desafiador (em especial o caso de manuscritos), é tido como resolvido, com soluções de sucesso aplicadas em larga escala 
 [\citeonline{DetcRecogWild, WhatIsWrongSTR}], na maioria por apresentarem um contexto mais simples onde o texto está inserido, com planos de fundo mais 
 consistentes, com menos ruídos, e padrões de mais fácil detecção quando comparado aos casos de STR.
 
@@ -208,14 +208,14 @@ pois farão parte do desenvolvimento prático deste trabalho de graduação.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Detecção de Texto}
-Em momentos anteriores ao grande crescimento de popularidade do aprendizado profundo, as soluções de detecção de texto em cenas precisavam de profunda 
-análise e manuseio das imagens para conseguir identificar padrões em torno do problema a ser resolvido para que então fosse possível, manualmente, construir 
+Em momentos anteriores ao crescimento de popularidade do aprendizado profundo, as soluções de detecção de texto em cenas precisavam de profunda 
+análise e manuseio das imagens para conseguir identificar padrões em torno do problema para ser então possível, manualmente, construir 
 e descrever uma série de características que seriam a base para identificar o texto na imagem. Todo esse processo é bastante artesanal, consumindo muito 
 tempo humano, e as características produzidas, em geral, são especializadas no contexto de atuação, como citado por [\citeonline{DeepLearningATA}], 
 ou seja, o reuso de uma característica montada no contexto de detecção de texto em outros problemas, como, por exemplo, o processamento de linguagem natural, 
 seria difícil.
 
-Para o problema de detecção de texto, ainda no período anterior ao uso do aprendizado profundo, [\citeonline{DetcRecogWild, StrDlEra}] constatam que é 
+Para o problema de detecção de texto, ainda no período anterior ao uso do aprendizado profundo, [\citeonline{DetcRecogWild, StrDlEra}] constatam ser 
 possível, de maneira geral, agrupar as soluções baseadas em aprendizado de máquina clássico em duas categorias:
 
 \begin{itemize}
@@ -277,15 +277,15 @@ extração de características VGG-16 [\citeonline{VGG}]. A arquitetura da rede 
 dois resultados ao final da rede:
 
 \begin{itemize}
-    \item {Mapa de predição de região de carácter (\textit{Character Region Score}): probabilidades de cada píxel está localizado no centro de um caractere}
+    \item {Mapa de predição de região de carácter (\textit{Character Region Score}): probabilidades de cada píxel está localizado no centro de um caractere}.
 
-    \item {Mapa de predição de afinidade entre caracteres (\textit{Character Afiinity Score}): Probabilidades de cada píxel está localizado no centro da região entre caracteres}
+    \item {Mapa de predição de afinidade entre caracteres (\textit{Character Afiinity Score}): probabilidades de cada píxel está localizado no centro da região entre caracteres}.
 \end{itemize}
 
 Como o resultado da rede é bem específico, as imagens de \textit{ground-truth} são geradas a partir de processamento de imagens. A partir das 
 \textit{bounding-boxes} de cada caractere, um \textit{heatmap} de uma distribuição gaussiana é projetada dentro de cada região de caractere, representando 
 uma distribuição de probabilidade onde o centro da distribuição é o centro da região de caractere. Com isso tem-se o gabarito do primeiro resultado da rede. 
-O \textit{ground-truth} para as regiões de afinidade envolve novamente projetar um heatmap gaussiano em uma região que, agora, é calculada em tempo de 
+O \textit{ground-truth} para as regiões de afinidade envolve novamente projetar um \textit{heatmap} gaussiano em uma região que, agora, é calculada em tempo de 
 execução a partir dos \textit{bounding-boxes} de cada caractere. A Figura \ref{fig:craft_gt}  ilustra o método utilizado, que se baseia em calcular uma 
 região retangular entre caracteres utilizando os centroides dos caracteres vizinhos e centroides de triângulos gerados em cada caractere.
 
@@ -315,7 +315,7 @@ de métodos de processamento de imagem, conforme exemplificado na Figura \ref{fi
 
     \item \textit{Unwarping}: Uma vez em posse da capacidade de localizar todos os caracteres, obtida através da etapa de \textit{Character Split}, 
     pode-se projetar as coordenadas para as \textit{bounding-boxes} de cada caractere de volta para a imagem original aplicando as operações inversas 
-    às aplicadas na etapa de \textit{Cropping}
+    às aplicadas na etapa de \textit{Cropping}.
 \end{itemize}
 
 Com essas anotações geradas sobre as imagens reais das bases de dados de avaliação, os gabaritos para o treinamento do modelo completo são gerados 
@@ -360,7 +360,7 @@ Para introduzir com um pouco mais de detalhes um dos componentes base do desenvo
 
 \subsubsection{CRNN} \label{crnn}
 \textit{Convolutional Recurrent Neural Networks} [\citeonline{CRNN}], introduzido por \citeauthor{CRNN} é uma solução para o problema de reconhecimento 
-de texto popular, sendo citada em novos trabalhos e sempre presente em trabalhos comparativos. Este método veio para resolver grandes 
+de texto popular, citada em novos trabalhos e presente em trabalhos comparativos. Este método veio para resolver grandes 
 dificuldade das soluções anteriores, por exemplo: lidar com entradas e saídas de largura variados, possibilitar o aprendizado conhecido como fim-a-fim, 
 isto é, aplicar uma função de perda sobre o resultado do reconhecimento e essa perda ser propaganda para o aprendizado da rede extratora de características.
 
@@ -381,7 +381,7 @@ caracteres ou possibilitar o reconhecimento de um caractere, por exemplo, uma le
 
 Os resultados obtidos foram competitivos quando comparados aos métodos de reconhecimento anteriores, até mesmo superiores aos que já usavam 
 os conceitos de aprendizado profundo, com o adicional de prover meios de aprendizado integrado da rede convolucional e recorrente como uma unidade, 
-além de um modelo bem mais enxuto em número de parâmetros [\citeonline{CRNN}].
+além de um modelo mais enxuto em número de parâmetros [\citeonline{CRNN}].
 
 Por lidar com o reconhecimento como um problema de sequência, o modelo pressupõe que a orientação do texto é necessariamente da esquerda para a direita, 
 isso leva a uma limitação, que seria reconhecer textos com não exatamente horizontais e retilíneos.
