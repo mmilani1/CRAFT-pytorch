@@ -57,12 +57,13 @@ estão inseridos, outros fatores influenciam a observação desse texto, como il
     \label{fig:str-example}
 \end{figure}
 
-% TODO Esse paragrafo parece que ficou misturos niveis de abstrações diferentes. REVISAR
 As soluções para problemas de STR, para lidarem com o nível de generalização necessário para reconhecer texto nos mais diversos casos, são largamente 
 baseadas nos conceitos de aprendizado profundo, que demonstram conseguir ir um passo à frente no quesito reconhecimento de padrões em comparação às 
-técnicas clássicas de processamento de imagem e conseguirem ser aplicadas com eficiência sobre imagens, sendo a aplicação das redes neurais convolucionais, 
+técnicas clássicas de processamento de imagem. O uso em especial das redes neurais convolucionais, 
 comumente abreviadas para CNN pelo nome em inglês \textit{Convolutional Neural Networks}, um divisor de águas na evolução dessas soluções. 
-[\citeonline{DetcRecogWild,StrDlEra}].
+[\citeonline{DetcRecogWild,StrDlEra}]. A própria aplicação \textit{Google Lens}, citada anteriormente, utiliza redes convolucionais baseadas em RPN (\textit{Region Proposal Networks)} e redes recorrentes do tipo LSTM (\textit{Long Short-Term Memory}) para detectar e reconhecer texto nas imagens enviadas pelos usuários [\citeonline{GoogleLens}].
+
+A popular biblioteca OpenCV\footnote{https://opencv.org/} é uma porta de entrada para iniciantes experimentares soluções de detecção e reconhecimento de texto mais robustas. No módulo de redes neurais profundas da biblioteca, é disponibilizado ferramentas para executar modelos pré-treinados de detecção e de reconhecimento de texto, compatíveis com trabalhos relevantes na área, como EAST [\citeonline{EAST}] e o CRNN [\citeonline{CRNN}], por exemplo.
 
 A pesquisa e experimentação de novos métodos para resolver os mais diferentes problemas que permeiam o STR ainda é atual, com trabalhos 
 publicados recentemente.

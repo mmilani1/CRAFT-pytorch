@@ -13,11 +13,6 @@ Sob ótica de todo o ciclo de desenvolvimento deste trabalho de graduação, hou
     \item Implantação da solução em ambientes de computação em nuvem.
 \end{enumerate}
 
-% 1. Experimentação com soluções de reconhecimento e detecção de texto
-% 2. Desenvolvimento da solução fim-a-fim a partir de detectores e reconhecedores de texto
-% 3. Avaliação da solução fim-a-fim proposta
-% 4. Implantação da solução em ambientes de computação em nuvem
-
 Dessa forma, as seções a seguir detalharão cada uma dessas etapas, sob perspectiva da experiência do autor durante a execução deste 
 trabalho de graduação.
 
@@ -64,7 +59,7 @@ já que os procedimentos de treinamento dessas soluções não são triviais, al
 Adicionalmente, o código-fonte contém instruções minímas de como executar o modelo pré-treinado, que se mostraram suficientes para iniciantes 
 sem muita experiencia prévia com a linguagem de programação e em trabalhos de detecção de texto. Outro diferencial foi a possibilidade de executar 
 o modelo pré-treinado em equipamento físico sem aceleração gráfica, mesmo que com a penalização no tempo de execução. 
-Essa capacidade foi importante, já que os componentes compatíveis não são baratos, dado o contexto atual de cripto-moedas e escassez de processadores gráficos no mercado.
+Essa capacidade foi importante, já que os componentes compatíveis não são baratos, dado o contexto atual de cripto-moedas e escassez de processadores gráficos no mercado [\citeonline{ChipShortage}].
 
 Agora sobre a escolha do método de reconhecimento, como o detector escolhido usa a linguagem Python e o framework PyTorch, a lista de métodos 
 disponíveis foi filtrada por esses critérios. Uma implementação do CRNN em PyTorch foi escolhida, pois, atendia os critérios de compatibilidade 
@@ -129,14 +124,17 @@ novas a partir da base de código original sem ter o risco de empurrar mudanças
 foram replicados para a conta pessoal do autor e todo o desenvolvimento deste trabalho foi feito nos repositórios replicados.
 
 A partir dos repositórios replicados, foi utilizado um recurso da ferramenta de versionamento, o Git, que possibilita a composição de repositórios de modo 
-a facilitar a sincronização das bases de códigos. O recurso em questão é a criação de sub-módulos em um repositório Git. Usando o comando abaixo a partir 
+a facilitar a sincronização das bases de códigos. O recurso em questão é a criação de sub-módulos em um repositório Git. Usando o comando ilustrado na Figura \ref{fig:methodology_git_submodule} a partir 
 do repositório replicado do detector, foi gerado um relacionamento entre as duas bases de código, sendo que o repositório do CRNN agora é visto como um 
 sub-módulo do repositório do CRAFT, e, a partir disso, é possível baixar, usar, evoluir a base de código do repositório do CRNN diretamente do repositório 
 do CRAFT. Isso fez com que ambas soluções já tenham visibilidade uma da outra, mas ainda não fez com que trabalhem juntas.
 
-\begin{minted}{bash}
-    git submodule add https://github.com/mmilani1/crnn.pytorch
-\end{minted}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/git-submodule.png}
+    \caption{Comando do gerenciador de versão Git para criação de sub-módulos.}
+    \label{fig:methodology_git_submodule}
+\end{figure}
 
 Com as soluções na mesma base de código, uma etapa importante é garantir que ambas ainda funcionam isoladamente e validar a compatibilidade das dependências 
 de cada uma. Como mencionado na Seção \ref{sec:metodologia_experimentacao}, uma das motivações da escolha especificamente dessas duas implementações citadas foi 
@@ -170,19 +168,6 @@ apresenta o pseudo-algoritmo com as etapas do processamento executado.
 \Return{$palavras$}
 \end{algorithmic}
 \end{algorithm}
-
-% ```
-% imagem = lerEntrada()
-% vetoreDePalavrasReconhecidas = []
-% vetorDeRegioesDeTexto = detectorCRAFT(imagem)
-
-% para cada regiao em vetorDeRegioesDeTexto:
-%   regiaoDeTextoExtraida = extrairRegiaoDaImagemOriginal(regiao)
-%   palavra = reconhecimentoCRNN(regiãoDeTextoExtraida)
-%   vetorDePalavrasReconhecidas << palavra
-
-% retorna vetorDePalavrasReconhecidas
-% ```
 
 Para efetuar o recorte das regiões de texto localizadas e fornecidas na saída do modelo de detecção, foi utilizado um par de funções da biblioteca 
 OpenCV, especializada em ferramentas voltadas para visão computacional. As funções utilizadas foram \texttt{cv2.getPerspectiveTransform} e 
@@ -392,14 +377,33 @@ para criar uma imagem Docker. Ao executar a imagem pelo Docker, um novo processo
 pode executar o código compilado na imagem Docker. O arquivo Dockerfile pode ser consultado diretamente no repositório desse trabalho ou no 
 Apêndice \ref{apd:dockerfile}.
 
+Uma dificuldade durante essa etapa de definição da imagem do contêiner e escrita do arquivo \textit{Dockerfile} foi configurar adequadamente o ambiente virtual Python, gerenciado pelo Conda. Foram necessárias algumas tentativas sem sucesso de ativar o ambiente virtual corretamente dentro do contêiner para chegar na solução final demonstrada pelo Apêndice \ref{apd:dockerfile}. A criação do ambiente virtual a partir do arquivo de descrição de dependências do Conda, o \textit{requirements.yml} e o comando de inicialização da aplicação \textit{web} a partir do \textit{framework} Flask são os comandos mais significativos do arquivo Dockerfile.
+
 Ter a aplicação “conteinerizada” minimiza configuração para implantá-la na nuvem, já que não se faz mais necessário configurar o servidor 
-onde a aplicação será servida de forma específica para satisfazer as demandas de binários e bibliotecas para a aplicação em questão. Tudo o que é 
-necessário para executar a aplicação já está definido na imagem do contêiner e estará pronto para uso quando o contêiner foi iniciado, dessa forma, 
+onde a aplicação será servida de forma específica para satisfazer as demandas de binários e bibliotecas para a aplicação em questão. Todas as dependências necessárias para executar a aplicação já estão configuradas na imagem do contêiner e estarão pronto para uso quando o contêiner foi iniciado, dessa forma, 
 as etapas mencionadas nas Seções \ref{sec:metodologia_experimentacao} e \ref{sec:metodologia_desenvolvimento} referentes a configuração do ambiente 
 Python e instalação de dependências através do Conda já foi resolvido na criação da imagem e o ambiente já estará pronto para uso dentro do contêiner. 
 O servidor que hospeda os contêineres não precisa saber de especificidades de cada aplicação, sua responsabilidade é saber executar os contêineres e 
 compartilhar recursos computacionais com eles. Dessa forma, a implantação da aplicação no Heroku se resume a execução de um comando a interface de linha 
 de comando que a plataforma disponibiliza para implantar uma aplicação a partir de uma imagem Docker.
+
+Para criar uma aplicação pelo Heroku, é necessária a criação de uma conta de usuário na plataforma e não tem nenhum custo. Pela interface de usuário da plataforma, criar uma aplicação gratuita é simples e direto, capaz de ser feita com poucas ações. A Figura \ref{fig:methodology_heroku_dashboard} ilustra a visão da página de gestão da aplicação deste trabalho de graduação no Heroku.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/heroku-dashboard.png}
+    \caption{Página inicial da interface de gestão da aplicação no Heroku.}
+    \label{fig:methodology_heroku_dashboard}
+\end{figure}
+
+De forma geral, o Heroku disponibiliza três meios para implantar o código-fonte de uma aplicação nos servidores da plataforma:
+\begin{enumerate}
+    \item Envio do repositório Git contendo o código-fonte;
+    \item Integração direta com repositórios Git através do Github;
+    \item Envio da imagem de contêiner.
+\end{enumerate}
+
+A terceira opção foi a adotada, devido ao uso de ferramentas de conteinerização. A partir do uso da interface de linha de comando do Heroku, o principal comando são \texttt{heroku container:login}, para executar a autenticação com o repositório de imagens de contêineres Docker do Heroku, e o \texttt{heroku container:push web}, que utiliza o Docker para construir a imagem de contêiner a partir do arquivo Dockerfile e envia a imagem construída para o repositório de imagens do Heroku. Para iniciar a nova imagem submetida, é necessário usar o comando \texttt{heroku container:release web}, fazendo com que o servidor da aplicação comece a executar o contêiner. Mais detalhes e exemplos sobre o processo de implantação no Heroku utilizando Docker podem ser obtidos diretamente na documentação da plataforma\footnote{https://devcenter.heroku.com/articles/container-registry-and-runtime}. 
 
 \section{Considerações finais}
 Sucintamente, nesse capítulo foi apresentado como ocorreu o desenvolvimento deste trabalho de graduação, mencionando como os modelos de detecção e 

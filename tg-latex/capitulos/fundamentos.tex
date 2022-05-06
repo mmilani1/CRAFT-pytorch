@@ -1,8 +1,5 @@
 \chapter{Fundamentação Teórica}
 
-% Esse capitulo visa introduzir alguns dos conceitos e componentes vinculados aos tópicos de aprendizado de máquina e 
-aprendizado profundo, com enfoque nas aplicações de detecção e reconhecimento de texto.
-
 \section{Aprendizado de Máquina e Aprendizado Profundo}
 O aprendizado de máquina é uma área no amplo espaço de estudo de inteligência artificial. O aprendizado de máquina 
 envolve o estudo e aplicação de algoritmos especialistas em reconhecer padrões em bases de dados, muitas vezes não 
@@ -142,12 +139,12 @@ dessa forma, na operação de convolução, cada neurônio da rede tem a respons
 
 A partir do uso dos componentes mais comum e básicos de uma rede convolucional em diferentes composições, é possível configurar arquiteturas mais complexas. 
 Alguns trabalhos ao longo dos últimos anos exploraram novas arquiteturas de redes convolucionais, como, por exemplo, VGG [\citeonline{VGG}], 
-ResNet [\citeonline{ResNet}] e GoogLeNet [\citeonline{GooLeNet}]. Uma base de imagens utilizada por alguns desses trabalhos é o ImageNet 
-[\citeonline{ImageNet}], que contém vasto número de exemplos que são base de uma competição de detecção e classificação de objetos, ILSVRC 
-(\textit{ImageNet Large Scale Visual Recognition Challenge}) [\citeonline{ILSVRC}]. Unindo a robustez e capacidade de representação de características das 
-redes convolucionais com a alta exposição a diversos exemplos através do ImageNet, as redes melhores colocadas no ILSVRC ao longo dos anos se tornaram 
-referência em extração de características e, em diversos casos [\citeonline{CRAFT, CRNN}], são utilizadas em soluções de contexto mais específicos justamente 
-por técnicas como o \textit{transfer-learning} [\citeonline{TransfLearn}].
+ResNet [\citeonline{ResNet}] e GoogLeNet [\citeonline{GooLeNet}]. Em [\citeonline{ReviewDL}] é feita uma revisão sobre as redes convolucionais mais relevantes da última década, introduzindo com mais detalhes cada arquitetura e suas motivações, com as principais evoluções entre cada uma das redes citadas. 
+Uma base de imagens utilizada por alguns desses trabalhos é o ImageNet [\citeonline{ImageNet}], que contém vasto número de exemplos que são base de uma 
+competição de detecção e classificação de objetos, ILSVRC (\textit{ImageNet Large Scale Visual Recognition Challenge}) [\citeonline{ILSVRC}]. 
+Unindo a robustez e capacidade de representação de características das redes convolucionais com a alta exposição a diversos exemplos através do ImageNet, 
+as redes melhores colocadas no ILSVRC ao longo dos anos se tornaram referência em extração de características e, em diversos casos [\citeonline{CRAFT, CRNN}], 
+são utilizadas em soluções de contexto mais específicos justamente por técnicas como o \textit{transfer-learning} [\citeonline{TransfLearn}].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -387,3 +384,8 @@ Por lidar com o reconhecimento como um problema de sequência, o modelo pressup�
 isso leva a uma limitação, que seria reconhecer textos com não exatamente horizontais e retilíneos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Considerações finais}
+Este capitulo introduziu brevemente os componentes mais populares de aprendizado profundo, as redes convolucionais e as redes recorrentes, e apresentou um pouco sobre a evolução da área de estudo de detecção e reconhecimento de texto, exemplificando a crescente adoção dos métodos de aprendizado profundo nas soluções dessa categoria de problema. Adicionalmente, os métodos CRAFT e CRNN, componentes importantes na solução proposta por este trabalho de graduação, foram revisados com mais detalhes.
+
+O próximo capítulo abordará as etapas percorridas no desenvolvimento da solução proposta, além de apresentar os meios de avaliação e implantação utilizados.
